@@ -1,0 +1,2348 @@
+!------------------------------------------------------------------------------
+! ODBC parameter file. Example only.
+!------------------------------------------------------------------------------
+ 
+ 
+!------------------------------------------------------------------------------
+! IMPORT WAREHOUSES. 
+!------------------------------------------------------------------------------
+
+[WHRE]
+
+  @TITLE = Import warehouses
+  
+  @CONVERTCHARS
+
+  @SKIP 
+    
+
+!------------------------------------------------------------------------------
+! EXPORT WAREHOUSES. 
+!------------------------------------------------------------------------------
+
+[EXPORT::WHRE]
+
+  @TITLE = Export warehouses
+  
+  @CONVERTCHARS
+  
+  @SKIP 
+
+
+!------------------------------------------------------------------------------
+! IMPORT SHIFT MODEL DAYS. 
+!------------------------------------------------------------------------------
+
+[DPRE]
+
+  @TITLE = Import shift model days
+  
+  @CONVERTCHARS
+  
+  @SKIP 
+
+
+!------------------------------------------------------------------------------
+! EXPORT SHIFT MODEL DAYS. 
+!------------------------------------------------------------------------------
+
+[EXPORT::DPRE]
+
+  @TITLE = Export shift model days
+  
+  @CONVERTCHARS
+  
+  @SKIP
+
+
+!------------------------------------------------------------------------------
+! IMPORT SHIFT PATTERN LINES.
+!------------------------------------------------------------------------------
+
+[UPRE]
+
+  @TITLE = Import shift pattern lines
+
+  @CONVERTCHARS 
+
+  @SKIP
+
+
+!------------------------------------------------------------------------------
+! EXPORT SHIFT PATTERN LINES.
+!------------------------------------------------------------------------------
+
+[EXPORT::UPRE]
+
+  @TITLE = Export shift pattern lines
+
+  @CONVERTCHARS
+  
+  @SKIP
+
+
+!------------------------------------------------------------------------------
+! IMPORT CAPACITY ADJUSTMENTS.
+!------------------------------------------------------------------------------
+
+[AKRE]
+
+  @TITLE = Import capacity adjustments
+
+  @CONVERTCHARS
+  
+  @SKIP
+
+
+!------------------------------------------------------------------------------
+! EXPORT CAPACITY ADJUSTMENTS.
+!------------------------------------------------------------------------------
+
+[EXPORT::AKRE]
+
+  @TITLE = Export capacity adjustments
+
+  @CONVERTCHARS
+  
+  @SKIP
+  
+  
+!------------------------------------------------------------------------------
+! IMPORT RESOURCES.
+!------------------------------------------------------------------------------
+
+[RCRE]
+
+  @TITLE = Import resources
+
+  @CONVERTCHARS
+  
+  @SKIP
+
+
+!------------------------------------------------------------------------------
+! EXPORT RESOURCES.
+!------------------------------------------------------------------------------
+
+[EXPORT::RCRE]
+
+  @TITLE = Export resources
+
+  @CONVERTCHARS
+  
+  @SKIP
+  
+  
+!------------------------------------------------------------------------------
+! IMPORT NON-WORKING DAYS.
+!------------------------------------------------------------------------------
+
+[PKRE]
+
+  @TITLE = Import non-working days
+
+  @CONVERTCHARS
+  
+  @SKIP
+
+  
+!------------------------------------------------------------------------------
+! EXPORT NON-WORKING DAYS.
+!------------------------------------------------------------------------------
+
+[EXPORT::PKRE]
+
+  @TITLE = Export non-working days
+
+  @CONVERTCHARS
+  
+  @SKIP
+  
+  
+!------------------------------------------------------------------------------
+! IMPORT WORK CENTERS.
+!------------------------------------------------------------------------------
+
+[MGRE]
+
+  @TITLE = Import work centers
+
+  @CONVERTCHARS
+  
+  @SKIP
+  
+  
+!------------------------------------------------------------------------------
+! EXPORT WORK CENTERS.
+!------------------------------------------------------------------------------
+
+[EXPORT::MGRE]
+
+  @TITLE = Export work centers
+
+  @CONVERTCHARS
+  
+  @SKIP
+  
+  
+!------------------------------------------------------------------------------
+! IMPORT OF TRANSPORTATION MATRIX.
+!------------------------------------------------------------------------------
+
+[TTRE]
+
+  @TITLE = Import transportation matrix
+ 
+  @CONVERTCHARS
+  
+  @SKIP
+
+  
+!------------------------------------------------------------------------------
+! EXPORT OF TRANSPORTATION MATRIX.
+!------------------------------------------------------------------------------
+
+[EXPORT::TTRE]
+
+  @TITLE = Export transportation matrix
+ 
+  @CONVERTCHARS
+  
+  @SKIP
+
+
+!------------------------------------------------------------------------------
+! IMPORT SETUP TIME MATRIX.
+!------------------------------------------------------------------------------
+
+[SMRE]
+
+  @TITLE = Import setup time matrix
+
+  @CONVERTCHARS
+  
+  @SKIP
+
+
+!------------------------------------------------------------------------------
+! EXPORT SETUP TIME MATRIX.
+!------------------------------------------------------------------------------
+
+[EXPORT::SMRE]
+
+  @TITLE = Export setup time matrix
+
+  @CONVERTCHARS
+  
+  @SKIP
+          
+       
+!------------------------------------------------------------------------------
+! IMPORT ORDER HEADERS.
+!------------------------------------------------------------------------------
+ 
+[ORDERHEADERS]
+ 
+ @TITLE = Import order headers
+ 
+ @CONVERTCHARS 
+ 
+!------------------------------------------------------------------------------
+! RELEASED ORDER HEADERS TOP LEVEL (ORIGINAL DUE-DATE USED).
+!------------------------------------------------------------------------------
+ 
+ SELECT
+
+  @COL  = 'O'                           ;CHAR      ;                                        ;TOHEAD.EOHTYP    ;       ;Record type
+  @COL  = DIGITS(VHRORC)||' '||VHRORN   ;CHAR      ;                                        ;TOHEAD.COHPEG    ;       ;Peg-ID
+  @COL  = VHPRNO                        ;CHAR      ;                                        ;TOHEAD.COHITM    ;       ;Item identification
+  @COL  = VHMFNO                        ;INT       ;                                        ;TOHEAD.MOHMRP    ;       ;MRP order number
+  @COL  = VHMFNO                        ;INT       ;                                        ;TOHEAD.COHEOI    ;       ;External ordernumber
+  @COL  = 5                             ;SMALL     ;                                        ;TOHEAD.IOHPRI    ;       ;Network priority
+  @COL  = VHFFID                        ;INT       ;XD2PMS                                  ;TOHEAD.MOHDDT    ;       ;MRP duedate
+  @COL  = 160000                        ;INT       ;XT2PMS                                  ;TOHEAD.MOHDDT    ;       ;MRP duetime
+  @COL  = VHRGDT                        ;INT       ;XD2PMS                                  ;TOHEAD.MOHCDT    ;       ;Customer order line receipt date
+  @COL  = VHWHST                        ;CHAR      ;                                        ;TOHEAD.IOHSTA    ;       ;Shop order status
+  @COL  = VHORQT                        ;FLOAT     ;                                        ;TOHEAD.ROHPLQ    ;       ;Planned quantity
+  @COL  = VHMAQT                        ;FLOAT     ;                                        ;TOHEAD.ROHFDQ    ;       ;Finished quantity
+  @COL  = SUBSTR(MMITDS, 1, 25)         ;CHAR      ;                                        ;TOHEAD.COHDES    ;       ;Item description
+  @COL  = VHSTDT                        ;INT       ;XD2PMS                                  ;TOHEAD.MOHFST    ;       ;Finite schedule start date
+  @COL  = VHMSTI*100                    ;INT       ;XT2PMS                                  ;TOHEAD.MOHFST    ;       ;Finite schedule start time
+  @COL  = VHFIDT                        ;INT       ;XD2PMS                                  ;TOHEAD.MOHFED    ;       ;Finite schedule end date
+  @COL  = VHMFTI*100                    ;INT       ;XT2PMS                                  ;TOHEAD.MOHFED    ;       ;Finite schedule end time
+  @COL  = 'P'                           ;CHAR      ;                                        ;TOHEAD.EOHNWS    ;       ;Network status
+  @COL  = VHRORL                        ;INT       ;                                        ;TOHEAD.MOHPGS    ;       ;Peg suffix
+  @COL  = 10                            ;SMALL     ;                                        ;TOHEAD.IOHOPR    ;       ;External order priority
+  @COL  = 1                             ;SMALL     ;                                        ;TOHEAD.IOHCGR    ;       ;Color group
+  @COL  = 'R'                           ;CHAR      ;                                        ;TOHEAD.EOHOSS    ;       ;Internal order status
+  @COL  = '1'                           ;CHAR      ;                                        ;TOHEAD.EOHOTY    ;       ;Order type.
+  @COL  = '0'                           ;CHAR      ;                                        ;TOHEAD.EOHSDP    ;       ;Surplus disposal priority
+  @COL  = ' '                           ;CHAR      ;                                        ;TOHEAD.EOHBSA    ;       ;Batch sizing allowed
+ 
+ FROM MWOHED A, MITMAS B
+  
+ WHERE
+
+  @WCOL = A.VHCONO                      ;DEC 3,0   ;                                        ;TDBSTR.IDBCMP    ;       ;Company
+  @WCOL = AND A.VHFACI                  ;CHAR      ;                                        ;TDBSTR.CDBFAC    ;       ;Facility
+  @WCOL = AND A.VHWHLO                  ;CHAR      ;                                        ;TDBSTR.CDBWAR    ;       ;Warehouse
+  @WCOL = AND A.VHSTDT <=               ;DEC 8,0   ;PMS2XD                                  ;TDBSTR.MDBSTS    ;       ;Date corresponding to Scheduling Horizon
+          AND A.VHWHST BETWEEN '20' AND '89'
+          AND A.VHMFHL = A.VHMFNO
+          AND B.MMCONO = A.VHCONO
+          AND B.MMITNO = A.VHPRNO
+ 
+!------------------------------------------------------------------------------
+! RELEASED ORDER HEADERS AT LOWER LEVELS  (FINISH-DATE USED AS DUE-DATE)
+! (ORDER NUMBER <> ORDER NUMBER AT HIGHEST LEVEL).
+!------------------------------------------------------------------------------
+ 
+ UNION SELECT 'O', DIGITS(VHRORC)||' '||VHRORN, VHPRNO, VHMFNO, VHMFNO, 5, VHFIDT, VHMFTI, VHRGDT, VHWHST,
+              VHORQT, VHMAQT, SUBSTR(MMITDS, 1, 25), VHSTDT, VHMSTI*100, VHFIDT, VHMFTI*100, ' ',
+              VHRORL, 10, 2, 'R','1','0',' '
+ 
+ FROM MWOHED A, MITMAS B
+  
+ WHERE
+
+  @WCOL = A.VHCONO                      ;DEC 3,0   ;                                        ;TDBSTR.IDBCMP    ;       ;Company
+  @WCOL = AND A.VHFACI                  ;CHAR      ;                                        ;TDBSTR.CDBFAC    ;       ;Facility
+  @WCOL = AND A.VHWHLO                  ;CHAR      ;                                        ;TDBSTR.CDBWAR    ;       ;Warehouse
+  @WCOL = AND A.VHSTDT <=               ;DEC 8,0   ;PMS2XD                                  ;TDBSTR.MDBSTS    ;       ;Date corresponding to Scheduling Horizon
+          AND A.VHMFHL <> A.VHMFNO
+          AND A.VHWHST BETWEEN '20' AND '89'
+          AND B.MMCONO = A.VHCONO
+          AND B.MMITNO = A.VHPRNO
+ 
+!------------------------------------------------------------------------------
+! PLANNED ORDER HEADERS.
+!------------------------------------------------------------------------------
+ 
+@LINKED
+ 
+ @CONVERTCHARS
+ 
+ SELECT
+
+  @COL  = 'O'                           ;CHAR      ;                                        ;TOHEAD.EOHTYP    ;       ;Record type
+  @COL  = DIGITS(RORORC)||' '||RORORN   ;CHAR      ;                                        ;TOHEAD.COHPEG    ;       ;Peg-ID
+  @COL  = ROPRNO                        ;CHAR      ;                                        ;TOHEAD.COHITM    ;       ;Item identification
+  @COL  = ROPLPN                        ;INT       ;                                        ;TOHEAD.MOHMRP    ;       ;MRP order number
+  @COL  = ROPLPN                        ;INT       ;                                        ;TOHEAD.COHEOI    ;       ;External ordernumber
+  @COL  = 9                             ;SMALL     ;                                        ;TOHEAD.IOHPRI    ;       ;Network priority
+  @COL  = ROFIDT                        ;INT       ;XD2PMS                                  ;TOHEAD.MOHDDT    ;       ;MRP duedate
+  @COL  = ROMFTI*100                    ;INT       ;XT2PMS                                  ;TOHEAD.MOHDDT    ;       ;MRP duetime
+  @COL  = RORGDT                        ;INT       ;XD2PMS                                  ;TOHEAD.MOHCDT    ;       ;Customer order line receipt date
+  @COL  = ROPSTS                        ;CHAR      ;TRANS(30,20)                            ;TOHEAD.IOHSTA    ;       ;Shop order status
+  @COL  = ROPPQT                        ;FLOAT     ;                                        ;TOHEAD.ROHPLQ    ;       ;Planned quantity
+  @COL  = SUBSTR(MMITDS, 1, 25)         ;CHAR      ;                                        ;TOHEAD.COHDES    ;       ;Item description
+  @COL  = ROSTDT                        ;INT       ;XD2PMS                                  ;TOHEAD.MOHFST    ;       ;Finite schedule start date
+  @COL  = ROMSTI*100                    ;INT       ;XT2PMS                                  ;TOHEAD.MOHFST    ;       ;Finite schedule start time
+  @COL  = ROFIDT                        ;INT       ;XD2PMS                                  ;TOHEAD.MOHFED    ;       ;Finite schedule end date
+  @COL  = ROMFTI*100                    ;INT       ;XT2PMS                                  ;TOHEAD.MOHFED    ;       ;Finite schedule end time
+  @COL  = RORORL                        ;INT       ;                                        ;TOHEAD.MOHPGS    ;       ;Peg suffix
+  @COL  = 9                             ;SMALL     ;                                        ;TOHEAD.IOHOPR    ;       ;External order priority
+  @COL  = 2                             ;SMALL     ;                                        ;TOHEAD.IOHCGR    ;       ;Color group
+  @COL  = 'P'                           ;CHAR      ;                                        ;TOHEAD.EOHOSS    ;       ;Internal order status
+  @COL  = 'P'                           ;CHAR      ;                                        ;TOHEAD.EOHNWS    ;       ;Network status
+  @COL  = '1'                           ;CHAR      ;                                        ;TOHEAD.EOHOTY    ;       ;Order type.
+  @COL  = '0'                           ;CHAR      ;                                        ;TOHEAD.EOHSDP    ;       ;Surplus disposal priority
+  @COL  = ' '                           ;CHAR      ;                                        ;TOHEAD.EOHBSA    ;       ;Batch sizing allowed
+ 
+ FROM MMOPLP A, MITMAS B
+  
+ WHERE
+
+  @WCOL = A.ROCONO                      ;DEC 3,0   ;                                        ;TDBSTR.IDBCMP    ;       ;Company
+  @WCOL = AND A.ROFACI                  ;CHAR      ;                                        ;TDBSTR.CDBFAC    ;       ;Facility
+  @WCOL = AND A.ROWHLO                  ;CHAR      ;                                        ;TDBSTR.CDBWAR    ;       ;Warehouse
+  @WCOL = AND A.ROSTDT <=               ;DEC 8,0   ;PMS2XD                                  ;TDBSTR.MDBSTS    ;       ;Date corresponding to Scheduling Horizon
+          AND B.MMCONO = A.ROCONO
+          AND B.MMITNO = A.ROPRNO
+ 
+
+!------------------------------------------------------------------------------
+! IMPORT OPERATIONS.
+!------------------------------------------------------------------------------
+ 
+[OPERATIONS]
+ 
+ @TITLE = Import operations
+ 
+ @CONVERTCHARS
+ 
+!------------------------------------------------------------------------------
+! OPERATIONS FOR RELEASED ORDERS.
+!------------------------------------------------------------------------------
+ 
+ SELECT
+
+  @COL  = 'R'                           ;CHAR      ;                                        ;TOPRPL.EOPTYP    ;       ;Record type
+  @COL  = VOPRNO                        ;CHAR      ;                                        ;TDBSTR.CDBITM    ;       ;Item identification
+  @COL  = VOMFNO                        ;INT       ;                                        ;TDBSTR.MDBMRP    ;       ;MRP order number
+  @COL  = SUBSTR(VOOPDS, 1, 20)         ;CHAR      ;                                        ;TOPRPL.COPDES    ;       ;Operation description
+  @COL  = VOOPNO                        ;INT       ;                                        ;TOPRPL.MOPNUM    ;       ;Operation number
+  @COL  = VOSETI*100/POWER(60, SECOND(TIME('12:00:0'||PPPTUN))*1.0-1);FLOAT  ;              ;TOPRPL.ROPSUS    ;       ;Setup time standard (centihours)
+  @COL  = VOPITI*100/POWER(60, SECOND(TIME('12:00:0'||PPPTUN))*1.0-1)/MAX(VOCTCD,1)/MAX(VHBAQT*(1-VOFXTI),1);FLOAT     ;                                        ;TOPRPL.ROPTIM    ;       ;Operation time (centihours)
+  @COL  = VOPSSQ                        ;CHAR      ;                                        ;TOPRPL.COPCSK    ;       ;Co-sorting key
+  @COL  = VOPLGR                        ;CHAR      ;                                        ;TOPRPL.COPWCK    ;       ;Workcenter identification -from
+  @COL  = 10                            ;SMALL     ;                                        ;TOPRPL.IOPCOP    ;       ;Operation status(Sequensing)
+  @COL  = VOWOST                        ;CHAR      ;                                        ;TOPRPL.COPMOS    ;       ;Movex Operation status
+  @COL  = VOMAQT-VOSCQT                 ;FLOAT     ;                                        ;TOPRPL.ROPCPQ    ;       ;Quantity completed
+  @COL  = VOORQT                        ;FLOAT     ;                                        ;TOPRPL.ROPPLQ    ;       ;Planned quantity
+  @COL  = VOSCQT                        ;FLOAT     ;                                        ;TOPRPL.ROPACS    ;       ;Scrapped quantity
+  @COL  = VORPDT                        ;INT       ;XD2PMS                                  ;TOPRPL.MOPLTS    ;       ;Last timestamp (date)
+  @COL  = VORPTM                        ;INT       ;XT2PMS                                  ;TOPRPL.MOPLTS    ;       ;Last timestamp (time)
+  @COL  = VOFXTI                        ;SMALL     ;                                        ;TOPRPL.IOPIND    ;       ;Operation time indicator
+  @COL  = (VOMAQT-VOSCQT)*100/MAX(VOORQT,1);FLOAT     ;                                        ;TOPRPL.ROPPCT    ;       ;Percent completed (Max-function added in case VOORQT is 0)
+  @COL  = VOSTDT                        ;INT       ;XD2PMS                                  ;TOPRPL.MOPFST    ;       ;Finite scheduled start date
+  @COL  = VOMSTI*100                    ;INT       ;XT2PMS                                  ;TOPRPL.MOPFST    ;       ;Finite scheduled start time
+  @COL  = VOFIDT                        ;INT       ;XD2PMS                                  ;TOPRPL.MOPFED    ;       ;Finite scheduled end date
+  @COL  = VOMFTI*100                    ;INT       ;XT2PMS                                  ;TOPRPL.MOPFED    ;       ;Finite scheduled end time
+  @COL  = '0'                           ;CHAR      ;                                        ;TOPRPL.EOPOKY    ;       ;Overlap key
+  @COL  = VOFXTI*((VOUPIT*(2-INTEGER(PPPCAP)))+(VOUMAT*(INTEGER(PPPCAP)-1)))*100;FLOAT ;                                        ;TOPRPL.ROPAOP    ;       ;Actual run time   (VOFXTI can be 0 or 1)
+  @COL  = VOFXTI*((VOUSET*(2-INTEGER(PPPCAP)))+(VOUMAS*(INTEGER(PPPCAP)-1)))*100;FLOAT ;                                        ;TOPRPL.ROPASU    ;       ;Actual setup time (VOFXTI can be 0 or 1)
+  @COL  = '0'                           ;CHAR      ;                                        ;TOPRPL.EOPOLA    ;       ;Overlap Code
+  @COL  = '00'                          ;CHAR      ;                                        ;TOPRPL.COPSEC    ;       ;Overlap Code
+ 
+!------------------------------------------------------------------------------
+! If the DB/2 database does not support the transformation from CHAR to INTEGER with the integer function
+! do as follows:
+! 1) Copy the first part of the union and make it a @LINKED statement.
+! 2) Substitute the 'Actual run time' and 'Actual setup time' in the first of the two linked statements with these 2 lines
+!     @COL  = VOFXTI*VOUMAT*100     ;FLOAT ;          ;FLOAT     ;7      ;       ; Actual run time   (VOFXTI can be 0 or 1)
+!     @COL  = VOFXTI*VOUMAS*100     ;FLOAT ;          ;FLOAT     ;8      ;       ; Actual setup time (VOFXTI can be 0 or 1)
+! 3) Add the following line in the end of the WHERE-clause of the first of the two linked statements
+!     AND PPPCAP='2'
+! 4) Substitute the 'Actual run time' and 'Actual setup time' in the second of the two linked statements with these 2 lines
+!     @COL  = VOFXTI*VOUPIT*100     ;FLOAT ;          ;FLOAT     ;7      ;       ; Actual run time   (VOFXTI can be 0 or 1)
+!     @COL  = VOFXTI*VOUSET*100     ;FLOAT ;          ;FLOAT     ;8      ;       ; Actual setup time (VOFXTI can be 0 or 1)
+! 5) Add the following line in the end of the WHERE-clause of the second of the two linked statements
+!     AND PPPCAP='1'
+!------------------------------------------------------------------------------
+ 
+ FROM MWOHED A, MWOOPE B, MPDWCT C
+  
+ WHERE
+
+  @WCOL = A.VHCONO                      ;DEC 3,0   ;                                        ;TDBSTR.IDBCMP    ;       ;Company
+  @WCOL = AND A.VHFACI                  ;CHAR      ;                                        ;TDBSTR.CDBFAC    ;       ;Facility
+          AND A.VHWHST BETWEEN '20' AND '89'
+          AND A.VHCONO = B.VOCONO
+          AND A.VHFACI = B.VOFACI
+          AND A.VHPRNO = B.VOPRNO
+          AND A.VHMFNO = B.VOMFNO
+          AND C.PPCONO = B.VOCONO
+          AND C.PPFACI = B.VOFACI
+          AND C.PPPLGR = B.VOPLGR
+ 
+!------------------------------------------------------------------------------
+! OPERATIONS FOR PLANNED ORDERS.
+!------------------------------------------------------------------------------
+ 
+ UNION SELECT 'R',POPRN1,POPLPN,SUBSTR(POOPDS, 1, 20),POOPNO,
+              POSETI*100/POWER(60,SECOND(TIME('12:00:0'||PPPTUN))*1.0-1),
+              POPITI*100/POWER(60,SECOND(TIME('12:00:0'||PPPTUN))*1.0-1)/MAX(POCTCD,1)/MAX(PHBAQT*(1-POFXTI),1),
+              '',POPLGR,10,'10',0,ROPPQT,0,0,0,POFXTI,0,0,0,0,0,'0',0,0,'0','00'
+ 
+ FROM MMOPLP A, MMOPPO B, MPDWCT C, MPDHED D
+  
+ WHERE
+
+  @WCOL = A.ROCONO                      ;DEC 3,0   ;                                        ;TDBSTR.IDBCMP    ;       ;Company
+  @WCOL = AND A.ROFACI                  ;CHAR      ;                                        ;TDBSTR.CDBFAC    ;       ;Facility
+          AND A.ROCONO = B.POCONO
+          AND A.ROPRNO = B.POPRN1
+          AND A.ROPLPN = B.POPLPN
+          AND C.PPCONO = B.POCONO
+          AND C.PPFACI = A.ROFACI
+          AND C.PPPLGR = B.POPLGR
+          AND D.PHCONO = A.ROCONO
+          AND D.PHFACI = A.ROFACI
+          AND D.PHPRNO = A.ROPRNO
+
+ ORDER BY 2, 3, 5
+ 
+
+!------------------------------------------------------------------------------
+! IMPORT ORDER RELATIONS.
+!------------------------------------------------------------------------------
+ 
+[ORDER-RELATIONS]
+ 
+ @TITLE = Import order relations
+ 
+ @CONVERTCHARS
+ 
+!------------------------------------------------------------------------------
+! ORDER RELATIONS TYPE 'M'AND 'P' FOR RELEASED ORDERS.
+!
+! SUBSTR I SUBSTR(DIGITS(... IS ONLY USED ON DB2/NT, WHERE THE DIGITS FUNCTION
+! RETURNS 10 DIGITS WITH LEADING ZEROS TO FILL UP THE STRING
+!------------------------------------------------------------------------------
+ 
+ SELECT
+
+  @COL  = MBPUIT                        ;INT       ;TRANS(1,M)(99,D)(P)                     ;TRSHIP.ERSTYP    ;       ;Order relations type
+  @COL  = VMPRNO                        ;CHAR      ;                                        ;TRSHIP.CRSPIT    ;       ;Parent order item number
+  @COL  = VMMFNO                        ;INT       ;                                        ;TRSHIP.MRSPON    ;       ;Parent order MRP order number
+  @COL  = VMMSEQ                        ;SMALL     ;                                        ;TRSHIP.MRSSEQ    ;       ;Network connection sequence no.
+  @COL  = VMOPNO                        ;INT       ;                                        ;TRSHIP.MRSPOP    ;       ;Parent order operation number
+  @COL  = VMMTNO                        ;CHAR      ;                                        ;TRSHIP.CRSCIT    ;       ;Component order item number
+  @COL  = VMMTNO                        ;CHAR      ;                                        ;TRSHIP.CRSDIT    ;       ;Demand item number
+  @COL  = ABS(MOTRQT)                   ;FLOAT     ;                                        ;TRSHIP.RRSQTY    ;       ;Required quantity
+  @COL  = 'FS'                          ;CHAR      ;                                        ;TRSHIP.CRSOCO    ;       ;Overlap type
+  @COL  = (MOPLDT-VMRDAT)*2400          ;FLOAT     ;                                        ;TRSHIP.RRSOBV    ;       ;Overlap base
+ 
+ FROM MWOHED A, MWOMAT B, MITBAL C, MITPLO E
+ 
+ WHERE
+
+  @WCOL = A.VHCONO                      ;DEC 3,0   ;                                        ;TDBSTR.IDBCMP    ;       ;Company
+  @WCOL = AND A.VHFACI                  ;CHAR      ;                                        ;TDBSTR.CDBFAC    ;       ;Facility
+  @WCOL = AND B.VMWHLO                  ;CHAR      ;                                        ;TDBSTR.CDBWAR    ;       ;Warehouse
+          AND A.VHWHST BETWEEN '20' AND '89'
+          AND A.VHCONO = B.VMCONO
+          AND A.VHFACI = B.VMFACI
+          AND A.VHPRNO = B.VMPRNO
+          AND A.VHMFNO = B.VMMFNO
+          AND (B.VMBYPR = 0 OR B.VMBYPR = 3)
+          AND C.MBCONO = B.VMCONO
+          AND C.MBWHLO = B.VMWHLO
+          AND C.MBITNO = B.VMMTNO
+          AND E.MOCONO = B.VMCONO
+          AND E.MOWHLO = B.VMWHLO
+          AND E.MOITNO = B.VMMTNO
+!         AND E.MORIDN = SUBSTR(DIGITS(B.VMMFNO), 4, 7)
+          AND E.MORIDN = DIGITS(B.VMMFNO)
+          AND E.MORIDL = B.VMMSEQ
+          AND E.MOORCA = '111'
+ 
+!------------------------------------------------------------------------------
+! ORDER RELATIONS TYPE 'D' FOR RELEASED ORDERS. IF THE COMPANY DOES NOT USE
+! BY-PRODUCTS, THE D RECORDS CAN BE REMOVED FROM THE MATERIAL LINK SELECTION.
+!------------------------------------------------------------------------------
+ 
+ UNION SELECT 99,VMPRNO,VMMFNO,VMMSEQ,VMOPNO,VMMTNO,ABS(MOTRQT),'FS',(MOPLDT-VMRDAT)*2400
+ 
+ FROM MWOHED A, MWOMAT B, MITPLO E
+  
+ WHERE
+
+  @WCOL = A.VHCONO                      ;DEC 3,0   ;                                        ;TDBSTR.IDBCMP    ;       ;Company
+  @WCOL = AND A.VHFACI                  ;CHAR      ;                                        ;TDBSTR.CDBFAC    ;       ;Facility
+  @WCOL = AND B.VMWHLO                  ;CHAR      ;                                        ;TDBSTR.CDBWAR    ;       ;Warehouse
+          AND A.VHWHST BETWEEN '20' AND '89'
+          AND A.VHCONO = B.VMCONO
+          AND A.VHFACI = B.VMFACI
+          AND A.VHPRNO = B.VMPRNO
+          AND A.VHMFNO = B.VMMFNO
+          AND (B.VMBYPR = 1 OR B.VMBYPR = 2)
+          AND E.MOCONO = B.VMCONO
+          AND E.MOWHLO = B.VMWHLO
+          AND E.MOITNO = B.VMMTNO
+!         AND E.MORIDN = SUBSTR(DIGITS(B.VMMFNO), 4, 7)
+          AND E.MORIDN = DIGITS(B.VMMFNO)
+          AND E.MORIDL = B.VMMSEQ
+          AND (E.MOORCA = '121' OR E.MOORCA = '131')
+ 
+!------------------------------------------------------------------------------
+! ORDER RELATIONS TYPE 'M'AND 'P' FOR PLANNED ORDERS.
+!------------------------------------------------------------------------------
+ 
+@LINKED
+ 
+ @CONVERTCHARS
+ 
+ SELECT
+
+  @COL  = MBPUIT                        ;INT       ;TRANS(1,M)(99,D)(P)                     ;TRSHIP.ERSTYP    ;       ;
+  @COL  = ROPRNO                        ;CHAR      ;                                        ;TRSHIP.CRSPIT    ;       ;
+  @COL  = ROPLPN                        ;INT       ;                                        ;TRSHIP.MRSPON    ;       ;
+  @COL  = MORIDL                        ;SMALL     ;                                        ;TRSHIP.MRSSEQ    ;       ;
+  @COL  = PMOPNO                        ;INT       ;                                        ;TRSHIP.MRSPOP    ;       ;
+  @COL  = MOITNO                        ;CHAR      ;                                        ;TRSHIP.CRSCIT    ;       ;
+  @COL  = MOITNO                        ;CHAR      ;                                        ;TRSHIP.CRSDIT    ;       ;
+  @COL  = ABS(MOTRQT)                   ;FLOAT     ;                                        ;TRSHIP.RRSQTY    ;       ;
+ 
+ FROM MMOPLP A, MITPLO B, MITBAL C, MPDMAT D
+  
+ WHERE
+
+  @WCOL = A.ROCONO                      ;DEC 3,0   ;                                        ;TDBSTR.IDBCMP    ;       ;Company
+  @WCOL = AND A.ROWHLO                  ;CHAR      ;                                        ;TDBSTR.CDBWAR    ;       ;Warehouse
+  @WCOL = AND D.PMFACI                  ;CHAR      ;                                        ;TDBSTR.CDBFAC    ;       ;Facility
+          AND A.ROCONO = B.MOCONO
+          AND A.ROWHLO = B.MOWHLO
+!         AND SUBSTR(DIGITS(A.ROPLPN), 4, 7) = B.MORIDN
+          AND DIGITS(A.ROPLPN) = B.MORIDN
+          AND B.MOORCA = '110'
+          AND C.MBCONO = B.MOCONO
+          AND C.MBWHLO = B.MOWHLO
+          AND C.MBITNO = B.MOITNO
+          AND D.PMCONO = A.ROCONO
+          AND D.PMPRNO = A.ROPRNO
+          AND D.PMMTNO = B.MOITNO
+          AND (D.PMBYPR = 0 OR D.PMBYPR = 3)
+          AND B.MORIDL = D.PMMSEQ
+ 
+!------------------------------------------------------------------------------
+! ORDER RELATIONS TYPE 'D' FOR PLANNED ORDERS.
+!------------------------------------------------------------------------------
+ 
+ UNION SELECT 99,ROPRNO,ROPLPN,MORIDL,PMOPNO,MOITNO,ABS(MOTRQT)
+
+ FROM MMOPLP A, MITPLO B, MPDMAT D 
+ 
+ WHERE
+
+  @WCOL = A.ROCONO                      ;DEC 3,0   ;                                        ;TDBSTR.IDBCMP    ;       ;Company
+  @WCOL = AND A.ROWHLO                  ;CHAR      ;                                        ;TDBSTR.CDBWAR    ;       ;Warehouse
+  @WCOL = AND A.ROFACI                  ;CHAR      ;                                        ;TDBSTR.CDBFAC    ;       ;Facility
+          AND A.ROCONO = B.MOCONO
+          AND A.ROWHLO = B.MOWHLO
+!         AND SUBSTR(DIGITS(A.ROPLPN), 4, 7) = B.MORIDN
+          AND DIGITS(A.ROPLPN) = B.MORIDN
+          AND (B.MOORCA = '120' OR B.MOORCA = '130')
+          AND D.PMCONO = A.ROCONO
+          AND D.PMPRNO = A.ROPRNO
+          AND D.PMFACI = A.ROFACI
+          AND D.PMMTNO = B.MOITNO
+          AND (D.PMBYPR = 1 OR D.PMBYPR = 2)
+          AND B.MORIDL = D.PMMSEQ
+ 
+
+!------------------------------------------------------------------------------
+! IMPORT EXTRA ORDER INFORMATION.
+!------------------------------------------------------------------------------
+ 
+[EXOI]
+ 
+ @TITLE = Import extra order information
+ 
+ @CONVERTCHARS
+ 
+ SELECT
+
+  @COL  = VHPRNO                        ;CHAR      ;                                        ;TEOREG.CEOITM    ;       ;Item identification
+  @COL  = VHMFNO                        ;INT       ;                                        ;TEOREG.MEOMRP    ;       ;MRP order number
+  @COL  = SUBSTR(VHTXT1, 26, 35)        ;CHAR      ;                                        ;TEOREG.CEOFI1    ;  1:35 ;
+ 
+ FROM MWOHED A
+  
+ WHERE
+
+  @WCOL = A.VHFACI                      ;CHAR      ;                                        ;TDBSTR.CDBFAC    ;       ;Facility
+  @WCOL = AND A.VHCONO                  ;DEC 3,0   ;                                        ;TDBSTR.IDBCMP    ;       ;Company
+          AND A.VHWHST BETWEEN '20' AND '89'
+ 
+
+!------------------------------------------------------------------------------
+! IMPORT ITEMS.
+!------------------------------------------------------------------------------
+ 
+[ITEM]
+ 
+  @TITLE = Import items
+ 
+!------------------------------------------------------------------------------
+! MANUFACURED END - ITEMS (MBPUIT=1, MMACRF like '.6%').
+!------------------------------------------------------------------------------
+ 
+ SELECT
+ 
+  @COL  = MBITNO	;CHAR      ;                                        ;TITREG.CITITM    ;       ;Item number
+  @COL  = MBITNO	;CHAR      ;                                        ;TITREG.CITBOM(1) ;       ;Bill of material number 1
+  @COL  = MBITNO	;CHAR      ;                                        ;TITREG.CITRON(1) ;       ;Routing number 1
+  @COL  = case when XIFGRP is null then 'M' CONCAT mbitno else XIFGRP end      ;CHAR      ;                                        ;TITREG.CITFGR    ;       ;series group free group
+  @COL  = case when XGOFTM is null then -999900 else xgoftm*2400 end       ;FLOAT     ;                                        ;TITREG.RITSEB    ;       ;series group Offset
+  @COL  = CEIL(PHLEAL)                  ;SMALL     ;                                        ;TITREG.IITLTO    ;       ;Purchase lead time (days)
+  @COL  = MBSTQT                        ;FLOAT     ;                                        ;TITREG.RITOHA    ;       ;On hand quantity
+  @COL  = case when sum(notrqt) is null then case when sum(mlstqt) is null then (MBstqt-MBALQT) else (MBstqt-MBALQT-sum(mlstqt)+sum(mlalqt)) end else case when sum(mlstqt) is null then (MBstqt-MBALQT+sum(notrqt)) else (MBstqt-MBALQT+sum(notrqt)-sum(mlstqt)+sum(mlalqt)) end end     ;FLOAT     ;                                        ;TITREG.RITSTK    ;       ;Actual quantity
+  @COL  = MMITDS                        ;CHAR      ;                                        ;TITREG.CITDES    ;       ;Description
+  @COL  = 'M'                           ;CHAR      ;                                        ;TITREG.EITTYP    ;       ;Item type
+  @COL  = MBPUIT                        ;SMALL     ;                                        ;TITREG.IITPUI    ;       ;Acquisition code.
+  @COL  = MBMXST                        ;FLOAT     ;                                        ;TITREG.RITMAX    ;       ;Maximum stock.
+  @COL  = MBSSQT                        ;FLOAT     ;                                        ;TITREG.RITMIN    ;       ;Safety stock.
+  @COL  = MBCHNO                        ;INT       ;                                        ;TITREG.IITCHN    ;       ;Change number.
+!  @COL  = MBPLCD                        ;SMALL     ;                                        ;TITREG.IITOCD    ;       ;Planning policy (APP Order group).
+  @COL  = MBLEVL                        ;INT       ;                                        ;TITREG.IITMLC    ;       ;Material syncronization level (Movex lowest item level).
+  @COL  = MBPFTM                        ;SMALL     ;                                        ;TITREG.IITFHZ    ;       ;Planning time fence.
+  @COL  = MMITGR                        ;CHAR      ;                                        ;TITREG.CITIGR    ;       ;Item group.
+  @COL  = MMITCL                        ;CHAR      ;                                        ;TITREG.CITPGR    ;       ;Product group.
+  @COL  = MMNEWE                        ;FLOAT     ;                                        ;TITREG.RITNWE    ;       ;Nett weight.
+  @COL  = MMGRWE                        ;FLOAT     ;                                        ;TITREG.RITGWE    ;       ;Gross weight.
+  @COL  = MMVOL3                        ;FLOAT     ;                                        ;TITREG.RITVOL    ;       ;Volume.
+  @COL  = MBABCD                        ;CHAR      ;                                        ;TITREG.EITABC    ;       ;ABC class volume.
+  @COL  = MBRESP                        ;CHAR      ;                                        ;TITREG.CITUID    ;       ;Planner id.
+!  @COL  = MBSATD                        ;SMALL     ;                                        ;TITREG.RITSLT    ;       ;Safety leadtime.
+  @COL  = 1                             ;SMALL     ;                                        ;TITREG.RITSLT    ;       ;Safety leadtime.
+  @COL  = cast (case when ZBCFI2 in ('50','55','60','61','70','71','72') then  ZBCFI2 else 0 end as int)                             ;INT       ;                                        ;TITREG.CITPLP    ;       ;Planning policy.
+  @COL  = SUBSTR(MMITGR,1,5) CONCAT SUBSTR(MMACRF,2,2) CONCAT SUBSTR(MMITCL,1,2);CHAR    ;                                        ;TITREG.CITGTC    ;       ;Group technology class.
+
+
+
+!  @COL  = MBSALE                        ;          ;            ;TRANS(0,BLANK)(1,X)        ;TITREG.EITSAL    ;       ;Sales item (0=No, 1=Yes).
+!  @COL  = MBLEA2                        ;          ;            ;MATH(#SATD+#)              ;TITREG.RITSLT    ;       ;Safety + inspection leadtime.
+!  @COL  = MBSAEL                        ;          ;            ;                           ;TITREG.IITLSH    ;       ;Sales time.
+!  @COL  = MMSLDY                        ;          ;            ;                           ;TITREG.IITEXH    ;       ;Shelf life.
+!  @COL  = MMSLDY                        ;          ;            ;IF(#SLDY>0,D)|IF(#SAEL>0,S);TITREG.EITSLC    ;       ;Shelf life control.
+!  @COL  = MMHDPR                        ;          ;            ;                           ;TITREG.CITIFM    ;       ;Main product.
+  @COL = A.MBWHLO                        ;CHAR      ;                                     ;TITREG.CITWAR    ;       ; Warehouse
+
+from (mvxcdta.mitmas b join mvxcdta.mitbal a on (mmcono = mbcono) and (mmitno = mbitno)
+     left outer join mvxcdta.mptawy c ON (MBITNO = NOITNO) AND (MBWHLO = NOWHLO) AND (MBCONO = NOCONO) and nostat = '20')
+     left outer join mvxcdta.mitloc d on (mbitno = mlitno) and (mbwhlo = mlwhlo) and (mbcono = mlcono) and (mlstas = 2) and mlwhsl =((select mswhsl from mvxcdta.mitpce g where mseds1='1' and mscono='1' and mswhlo in ('MF1','VN1') and d.mlwhlo=g.mswhlo and d.mlwhsl=g.mswhsl))
+     left outer join pfxcdta.xitapi e on ((mbitno = xiitno) and (mbwhlo = xiwhlo) and (mbcono = xicono))
+     left outer join mvxcdta.mpdhed f on ((mbitno = phprno) and (mbcono = phcono) and (mbwhlo = phfaci))
+     left join pfxcdta.xitapg on (xicono = xgcono) and (xiwhlo = xgwhlo) and (xifgrp = xgfgrp)
+     left outer join pfxcdta.zitbalC0 g on (MBITNO=ZBITNO and MBCONO=ZBCONO and MBWHLO=ZBWHLO)
+  
+ WHERE
+ 
+  @WCOL = A.MBCONO                      ;DEC 3,0   ;                                        ;TDBSTR.IDBCMP    ;       ; Company
+          AND A.MBWHLO IN ('MF1','VN1')
+          AND A.MBPUIT = 1
+          AND B.MMSTAT BETWEEN '00' AND '89'
+          AND B.MMITNO BETWEEN '000000' AND '999999'
+          AND A.MBWHSY <>'F'
+          AND A.MBORTY NOT IN ('KMO')
+          AND B.MMACRF LIKE '.6%'
+          AND F.PHFACI in('MF1','VN1')
+          AND F.PHSTRT = 'STD'
+          group by MBWHLO,MBITNO,XIFGRP,XGOFTM,PHLEAL,MBSTQT,MBALQT,MMITDS,MBPUIT,MBMXST,MBSSQT,MBCHNO,MBLEVL,MBPFTM,MMITGR,MMITCL,MMNEWE,MMGRWE,MMVOL3,MBABCD,MBRESP,MBSATD,MMACRF,ZBCFI2
+ 
+ !------------------------------------------------------------------------------
+ ! MANUFACURED SUB - ITEMS MRP planned (MBPUIT=1, MMACRF not like '.6%', MBOPLC <> 3), Safety LEADTIME = 1
+ !------------------------------------------------------------------------------
+  
+ UNION SELECT MBITNO,
+              MBITNO,
+              MBITNO, 
+              case when XIFGRP is null then mbitno else XIFGRP end,
+              case when XGOFTM is null then -999900 else xgoftm*2400  end,
+              CEIL(PHLEAL),MBSTQT,
+              case when sum(notrqt) is null then 
+              case when sum(mlstqt) is null then MBstqt-MBALQT 
+              else MBstqt-MBALQT-sum(mlstqt)+sum(mlalqt) end 
+              else case when sum(mlstqt) is null then MBstqt-MBALQT+sum(notrqt) 
+              else MBstqt-MBALQT+sum(notrqt)-sum(mlstqt)+sum(mlalqt) end end,
+              MMITDS,case when MBitno in ('818143','815503') then'I' else 'M' end,MBPUIT,MBMXST,MBSSQT,MBCHNO,MBLEVL,
+              MBPFTM,MMITGR,MMITCL,MMNEWE,MMGRWE,MMVOL3,MBABCD,MBRESP,1,0,SUBSTR(MMITGR,1,5) CONCAT SUBSTR(MMACRF,2,2) CONCAT SUBSTR(MMITCL,1,2),A.MBWHLO
+ 
+from (mvxcdta.mitmas b join mvxcdta.mitbal a on (mmcono = mbcono) and (mmitno = mbitno)
+     left outer join mvxcdta.mptawy c ON (MBITNO = NOITNO) AND (MBWHLO = NOWHLO) AND (MBCONO = NOCONO) and nostat = '20')
+     left outer join mvxcdta.mitloc d on (mbitno = mlitno) and (mbwhlo = mlwhlo) and (mbcono = mlcono) and (mlstas = 2) and mlwhsl =((select mswhsl from mvxcdta.mitpce g where mseds1='1' and mscono='1'and mswhlo in ('MF1','VN1') and d.mlwhlo=g.mswhlo and d.mlwhsl=g.mswhsl))
+     left outer join pfxcdta.xitapi e on ((mbitno = xiitno) and (mbwhlo = xiwhlo) and (mbcono = xicono))
+     left outer join mvxcdta.mpdhed f on ((mbitno = phprno) and (mbcono = phcono)and (mbwhlo = phfaci))
+     left join pfxcdta.xitapg on (xicono = xgcono) and (xiwhlo = xgwhlo) and (xifgrp = xgfgrp)
+
+ WHERE
+ 
+  @WCOL = A.MBCONO                      ;DEC 3,0   ;                                        ;TDBSTR.IDBCMP    ;       ; Company
+          AND A.MBWHLO IN ('MF1','VN1')
+          AND A.MBPUIT = 1
+          AND B.MMSTAT BETWEEN '00' AND '89'
+          AND B.MMITNO BETWEEN '000000' AND '999999'
+          AND A.MBWHSY <>'F'
+          AND A.MBORTY NOT IN ('KMO')
+          AND A.MBOPLC <> 3
+          AND B.MMACRF NOT LIKE '.6%'
+          AND F.PHFACI IN ('MF1','VN1')
+          AND F.PHSTRT = 'STD'
+         
+group by MBWHLO,MBITNO,XIFGRP,XGOFTM,PHLEAL,MBSTQT,MBALQT,MMITDS,MBPUIT,MBMXST,MBSSQT,MBCHNO,MBLEVL,MBPFTM,MMITGR,MMITCL,MMNEWE,MMGRWE,MMVOL3,MBABCD,MBRESP,MBSATD,MMACRF
+ 
+
+ !------------------------------------------------------------------------------
+ ! MANUFACURED SUB - ITEMS Order initiated (MBPUIT=1, MMACRF not like '.6%', MBOPLC = 3), Safety LEADTIME = 1
+ !------------------------------------------------------------------------------
+  
+ UNION SELECT MBITNO,
+              MBITNO,
+              MBITNO,
+              case when XIFGRP is null then 'M' CONCAT mbitno else XIFGRP end,
+              case when XGOFTM is null then -999900 else xgoftm*2400  end,
+			  CEIL(PHLEAL),MBSTQT,
+              case when sum(notrqt) is null then 
+              case when sum(mlstqt) is null then MBstqt-MBALQT else MBstqt-MBALQT-sum(mlstqt)+sum(mlalqt) end 
+              else case when sum(mlstqt) is null then MBstqt-MBALQT+sum(notrqt) 
+              else MBstqt-MBALQT+sum(notrqt)-sum(mlstqt)+sum(mlalqt) end end,
+              MMITDS,'M',MBPUIT,MBMXST,MBSSQT,MBCHNO,MBLEVL,
+              MBPFTM,MMITGR,MMITCL,MMNEWE,MMGRWE,MMVOL3,MBABCD,MBRESP,1,0,SUBSTR(MMITGR,1,5) CONCAT SUBSTR(MMACRF,2,2) CONCAT SUBSTR(MMITCL,1,2),A.MBWHLO
+ 
+from (mvxcdta.mitmas b join mvxcdta.mitbal a on (mmcono = mbcono) and (mmitno = mbitno)
+     left outer join mvxcdta.mptawy c ON (MBITNO = NOITNO) AND (MBWHLO = NOWHLO) AND (MBCONO = NOCONO) and nostat = '20')
+     left outer join mvxcdta.mitloc d on (mbitno = mlitno) and (mbwhlo = mlwhlo) and (mbcono = mlcono) and (mlstas = 2) and mlwhsl=((select mswhsl from mvxcdta.mitpce g where mseds1='1' and mscono='1'and mswhlo in ('MF1','VN1') and d.mlwhlo=g.mswhlo and d.mlwhsl=g.mswhsl))
+     left outer join pfxcdta.xitapi e on ((mbitno = xiitno) and (mbwhlo = xiwhlo) and (mbcono = xicono))
+     left outer join mvxcdta.mpdhed f on ((mbitno = phprno) and (mbcono = phcono)and (mbwhlo = phfaci))
+     left join pfxcdta.xitapg on (xicono = xgcono) and (xiwhlo = xgwhlo) and (xifgrp = xgfgrp)
+
+ WHERE
+ 
+  @WCOL = A.MBCONO                      ;DEC 3,0   ;                                        ;TDBSTR.IDBCMP    ;       ; Company
+          AND A.MBWHLO IN ('MF1','VN1')
+          AND A.MBPUIT = 1
+          AND B.MMSTAT BETWEEN '00' AND '89'
+          AND B.MMITNO BETWEEN '000000' AND '999999'
+          AND A.MBWHSY <>'F'
+          AND A.MBORTY NOT IN ('KMO')
+          AND A.MBOPLC = 3
+          AND B.MMACRF NOT LIKE '.6%'
+          AND F.PHFACI IN ('MF1','VN1')
+          AND F.PHSTRT = 'STD'
+         
+group by MBWHLO,MBITNO,XIFGRP,XGOFTM,PHLEAL,MBSTQT,MBALQT,MMITDS,MBPUIT,MBMXST,MBSSQT,MBCHNO,MBLEVL,MBPFTM,MMITGR,MMITCL,MMNEWE,MMGRWE,MMVOL3,MBABCD,MBRESP,MBSATD,MMACRF
+ 
+
+
+
+ !------------------------------------------------------------------------------
+ ! INFORMATION ITEMS ITEMS (MBPUIT=1 AND MBWHSY = 'F').
+ !------------------------------------------------------------------------------
+  
+ UNION SELECT MBITNO,
+              MBITNO,
+              MBITNO,
+              case when XIFGRP is null then 'M' CONCAT mbitno else XIFGRP end,
+              case when XGOFTM is null then (((5)-CEIL(PHLEAL))*(2400)) else xgoftm*2400 end,
+              CEIL(PHLEAL),MBSTQT,
+              case when sum(notrqt) is null then case when sum(mlstqt) is null then (MBstqt-MBALQT) else (MBstqt-MBALQT-sum(mlstqt)+sum(mlalqt)) end else case when sum(mlstqt) is null then (MBstqt-MBALQT+sum(notrqt)) else (MBstqt-MBALQT+sum(notrqt)-sum(mlstqt)+sum(mlalqt)) end end,
+              MMITDS,'I',MBPUIT,MBMXST,MBSSQT,MBCHNO,MBLEVL,
+              MBPFTM,MMITGR,MMITCL,MMNEWE,MMGRWE,MMVOL3,MBABCD,MBRESP,0,0,SUBSTR(MMITGR,1,5) CONCAT SUBSTR(MMACRF,2,2) CONCAT SUBSTR(MMITCL,1,2),A.MBWHLO
+ 
+from (mvxcdta.mitmas b join mvxcdta.mitbal a on (mmcono = mbcono) and (mmitno = mbitno)
+     left outer join mvxcdta.mptawy c ON (MBITNO = NOITNO) AND (MBWHLO = NOWHLO) AND (MBCONO = NOCONO) and nostat = '20')
+     left outer join mvxcdta.mitloc d on (mbitno = mlitno) and (mbwhlo = mlwhlo) and (mbcono = mlcono) and (mlstas = 2) and mlwhsl =((select mswhsl from mvxcdta.mitpce g where mseds1='1' and mscono='1' and mswhlo in ('MF1','VN1') and d.mlwhlo=g.mswhlo and d.mlwhsl=g.mswhsl))
+     left outer join pfxcdta.xitapi e on ((mbitno = xiitno) and (mbwhlo = xiwhlo) and (mbcono = xicono))
+     left outer join mvxcdta.mpdhed f on ((mbitno = phprno) and (mbcono = phcono)and (mbwhlo = phfaci))
+     left join pfxcdta.xitapg on (xicono = xgcono) and (xiwhlo = xgwhlo) and (xifgrp = xgfgrp)
+   
+   WHERE
+ 
+   @WCOL = A.MBCONO                      ;DEC 3,0   ;                                        ;TDBSTR.IDBCMP    ;       ; Company
+           AND A.MBWHLO IN ('MF1','VN1')
+           AND A.MBPUIT = 1
+           AND B.MMSTAT BETWEEN '00' AND '99'
+           AND B.MMITNO BETWEEN '000000' AND '999999'
+           AND A.MBWHSY = 'F'
+           AND A.MBORTY NOT IN ('KMO')
+           AND F.PHFACI IN ('MF1','VN1')
+           AND F.PHSTRT = 'STD'
+  
+group by MBWHLO,MBITNO,XIFGRP,XGOFTM,PHLEAL,MBSTQT,MBALQT,MMITDS,MBPUIT,MBMXST,MBSSQT,MBCHNO,MBLEVL,MBPFTM,MMITGR,MMITCL,MMNEWE,MMGRWE,MMVOL3,MBABCD,MBRESP,MBSATD,MMACRF
+
+
+ !------------------------------------------------------------------------------
+! INFORMATION ITEMS ITEMS (MBPUIT=1 AND MBORTY = KMO, Kanban, Seasonal item <>1
+ !------------------------------------------------------------------------------
+  
+ UNION SELECT MBITNO,
+              MBITNO,
+              MBITNO,
+              case when XIFGRP is null then 'M' CONCAT mbitno else XIFGRP end,
+              case when XGOFTM is null then (((5)-CEIL(PHLEAL))*(2400)) else xgoftm*2400 end,
+              CEIL(PHLEAL),MBSTQT,
+              case when sum(notrqt) is null then case when sum(mlstqt) is null then (MBstqt-MBALQT) else (MBstqt-MBALQT-sum(mlstqt)+sum(mlalqt)) end else case when sum(mlstqt) is null then (MBstqt-MBALQT+sum(notrqt)) else (MBstqt-MBALQT+sum(notrqt)-sum(mlstqt)+sum(mlalqt)) end end,
+              MMITDS,'I',MBPUIT,MBMXST,MBSSQT,MBCHNO,MBLEVL,
+              MBPFTM,MMITGR,MMITCL,MMNEWE,MMGRWE,MMVOL3,MBABCD,MBRESP,0,0,SUBSTR(MMITGR,1,5) CONCAT SUBSTR(MMACRF,2,2) CONCAT SUBSTR(MMITCL,1,2),A.MBWHLO
+ 
+from (mvxcdta.mitmas b join mvxcdta.mitbal a on (mmcono = mbcono) and (mmitno = mbitno)
+     left outer join mvxcdta.mptawy c ON (MBITNO = NOITNO) AND (MBWHLO = NOWHLO) AND (MBCONO = NOCONO) and nostat = '20')
+     left outer join mvxcdta.mitloc d on (mbitno = mlitno) and (mbwhlo = mlwhlo) and (mbcono = mlcono) and (mlstas = 2) and mlwhsl =((select mswhsl from mvxcdta.mitpce g where mseds1='1' and mscono='1' and mswhlo in ('MF1','VN1') and d.mlwhlo=g.mswhlo and d.mlwhsl=g.mswhsl))
+     left outer join pfxcdta.xitapi e on ((mbitno = xiitno) and (mbwhlo = xiwhlo) and (mbcono = xicono))
+     left outer join mvxcdta.mpdhed f on ((mbitno = phprno) and (mbcono = phcono)and (mbwhlo = phfaci))
+     left join pfxcdta.xitapg on (xicono = xgcono) and (xiwhlo = xgwhlo) and (xifgrp = xgfgrp)
+ 
+   WHERE
+ 
+   @WCOL = A.MBCONO                      ;DEC 3,0   ;                                        ;TDBSTR.IDBCMP    ;       ; Company
+           AND A.MBWHLO IN ('MF1','VN1')
+           AND A.MBPUIT = 1
+           AND B.MMSTAT BETWEEN '00' AND '99'
+           AND B.MMITNO BETWEEN '000000' AND '999999'
+           AND A.MBORTY IN ('KMO')
+           AND F.PHFACI IN ('MF1','VN1')
+           AND F.PHSTRT = 'STD'
+           AND A.MBSESO <> 1
+  
+group by MBWHLO,MBITNO,XIFGRP,XGOFTM,PHLEAL,MBSTQT,MBALQT,MMITDS,MBPUIT,MBMXST,MBSSQT,MBCHNO,MBLEVL,MBPFTM,MMITGR,MMITCL,MMNEWE,MMGRWE,MMVOL3,MBABCD,MBRESP,MBSATD,MMACRF
+
+ !------------------------------------------------------------------------------
+! MANUFACTURED ITEMS ITEMS (MBPUIT=1 AND MBORTY = KMO, Kanban,Seasonal item = 1
+ !------------------------------------------------------------------------------
+  
+ UNION SELECT MBITNO,
+              MBITNO,
+              MBITNO,
+              case when XIFGRP is null then 'M' CONCAT mbitno else XIFGRP end,
+              case when XGOFTM is null then (((5)-CEIL(PHLEAL))*(2400)) else xgoftm*2400 end,
+              CEIL(PHLEAL),MBSTQT,
+              case when sum(notrqt) is null then case when sum(mlstqt) is null then (MBstqt-MBALQT) else (MBstqt-MBALQT-sum(mlstqt)+sum(mlalqt)) end else case when sum(mlstqt) is null then (MBstqt-MBALQT+sum(notrqt)) else (MBstqt-MBALQT+sum(notrqt)-sum(mlstqt)+sum(mlalqt)) end end,
+              MMITDS,'P',MBPUIT,MBMXST,MBSSQT,MBCHNO,MBLEVL,
+              MBPFTM,MMITGR,MMITCL,MMNEWE,MMGRWE,MMVOL3,MBABCD,MBRESP,0,0,SUBSTR(MMITGR,1,5) CONCAT SUBSTR(MMACRF,2,2) CONCAT SUBSTR(MMITCL,1,2),A.MBWHLO
+ 
+from (mvxcdta.mitmas b join mvxcdta.mitbal a on (mmcono = mbcono) and (mmitno = mbitno)
+     left outer join mvxcdta.mptawy c ON (MBITNO = NOITNO) AND (MBWHLO = NOWHLO) AND (MBCONO = NOCONO) and nostat = '20')
+     left outer join mvxcdta.mitloc d on (mbitno = mlitno) and (mbwhlo = mlwhlo) and (mbcono = mlcono) and (mlstas = 2) and mlwhsl=((select mswhsl from mvxcdta.mitpce g where mseds1='1' and mscono='1' and mswhlo='MF1'and d.mlwhsl=g.mswhsl))
+     left outer join pfxcdta.xitapi e on ((mbitno = xiitno) and (mbwhlo = xiwhlo) and (mbcono = xicono))
+     left outer join mvxcdta.mpdhed f on ((mbitno = phprno) and (mbcono = phcono)and (mbwhlo = phfaci))
+     left join pfxcdta.xitapg on (xicono = xgcono) and (xiwhlo = xgwhlo) and (xifgrp = xgfgrp)
+ 
+   WHERE
+ 
+   @WCOL = A.MBCONO                      ;DEC 3,0   ;                                        ;TDBSTR.IDBCMP    ;       ; Company
+           AND A.MBWHLO IN ('MF1','VN1')
+           AND A.MBPUIT = 1
+           AND B.MMSTAT BETWEEN '00' AND '99'
+           AND B.MMITNO BETWEEN '000000' AND '999999'
+           AND A.MBORTY IN ('KMO')
+           AND F.PHFACI IN ('MF1','VN1')
+           AND F.PHSTRT = 'STD'
+	   AND A.MBSESO = 1
+  
+group by MBWHLO,MBITNO,XIFGRP,XGOFTM,PHLEAL,MBSTQT,MBALQT,MMITDS,MBPUIT,MBMXST,MBSSQT,MBCHNO,MBLEVL,MBPFTM,MMITGR,MMITCL,MMNEWE,MMGRWE,MMVOL3,MBABCD,MBRESP,MBSATD,MMACRF
+
+ !------------------------------------------------------------------------------
+ ! DOP Items ITEMS (MBPUIT=3, internal DOP, not MBWHSY = 'F').
+ !------------------------------------------------------------------------------
+  
+ UNION SELECT MBITNO,
+              MBITNO,
+              MBITNO,
+              case when XIFGRP is null then 'D' CONCAT mbitno else XIFGRP end,
+              case when XGOFTM is null then 2400 else xgoftm*2400 end,
+              MBLEAT,MBSTQT,
+              case when sum(notrqt) is null then case when sum(mlstqt) is null then (MBstqt-MBALQT) else (MBstqt-MBALQT-sum(mlstqt)+sum(mlalqt)) end else case when sum(mlstqt) is null then (MBstqt-MBALQT+sum(notrqt)) else (MBstqt-MBALQT+sum(notrqt)-sum(mlstqt)+sum(mlalqt)) end end,
+              MMITDS,'M',MBPUIT,MBMXST,MBSSQT,MBCHNO,MBLEVL,
+              MBPFTM,MMITGR,MMITCL,MMNEWE,MMGRWE,MMVOL3,MBABCD,MBBUYE,0,cast (case when ZBCFI2 in ('50','55','60','61','70','71','72') then  ZBCFI2 else 0 end as int),SUBSTR(MMITGR,1,5) CONCAT SUBSTR(MMACRF,2,2) CONCAT SUBSTR(MMITCL,1,2),A.MBWHLO
+ 
+from (mvxcdta.mitmas b join mvxcdta.mitbal a on (mmcono = mbcono) and (mmitno = mbitno)
+     left outer join mvxcdta.mptawy c ON (MBITNO = NOITNO) AND (MBWHLO = NOWHLO) AND (MBCONO = NOCONO) and nostat = '20')
+     left outer join mvxcdta.mitloc d on (mbitno = mlitno) and (mbwhlo = mlwhlo) and (mbcono = mlcono) and (mlstas = 2) and mlwhsl =((select mswhsl from mvxcdta.mitpce g where mseds1='1' and mscono='1'and mswhlo in ('MF1','VN1') and d.mlwhlo=g.mswhlo and d.mlwhsl=g.mswhsl))
+     left outer join pfxcdta.xitapi e on ((mbitno = xiitno) and (mbwhlo = xiwhlo) and (mbcono = xicono))
+     left join pfxcdta.xitapg on (xicono = xgcono) and (xiwhlo = xgwhlo) and (xifgrp = xgfgrp)
+     left outer join pfxcdta.zitbalC0 g on (MBITNO=ZBITNO and MBCONO=ZBCONO and MBWHLO=ZBWHLO)
+   WHERE
+ 
+   @WCOL = A.MBCONO                      ;DEC 3,0   ;                                        ;TDBSTR.IDBCMP    ;       ; Company
+           AND A.MBWHLO IN ('MF1','VN1')
+           AND A.MBPUIT = 3
+           AND A.MBSUWH IN ('VN1','MF1')
+           AND B.MMSTAT BETWEEN '00' AND '99'
+           AND B.MMITNO BETWEEN '000000' AND '999999'
+           AND A.MBWHSY <> 'F'
+	            
+  
+group by MBWHLO,MBITNO,XIFGRP,XGOFTM,MBLEAT,MBSTQT,MBALQT,MMITDS,MBPUIT,MBMXST,MBSSQT,MBCHNO,MBLEVL,MBPFTM,MMITGR,MMITCL,MMNEWE,MMGRWE,MMVOL3,MBABCD,MBBUYE,MBSATD,MMACRF,ZBCFI2
+
+ !------------------------------------------------------------------------------
+ ! DOP Items ITEMS (MBPUIT=3, external DOP, not MBWHSY = 'F').
+ !------------------------------------------------------------------------------
+  
+ UNION SELECT MBITNO,
+              MBITNO,
+              MBITNO,
+              case when XIFGRP is null then 'D' CONCAT mbitno else XIFGRP end,
+              case when XGOFTM is null then 2400 else xgoftm*2400 end,
+              MBLEAT,MBSTQT,
+              case when sum(notrqt) is null then case when sum(mlstqt) is null then (MBstqt-MBALQT) else (MBstqt-MBALQT-sum(mlstqt)+sum(mlalqt)) end else case when sum(mlstqt) is null then (MBstqt-MBALQT+sum(notrqt)) else (MBstqt-MBALQT+sum(notrqt)-sum(mlstqt)+sum(mlalqt)) end end,
+              MMITDS,
+              case when MBSESO=1 then'I' else 'P' end,
+              MBPUIT,MBMXST,MBSSQT,MBCHNO,MBLEVL,
+              MBPFTM,MMITGR,MMITCL,MMNEWE,MMGRWE,MMVOL3,MBABCD,MBBUYE,0,0,SUBSTR(MMITGR,1,5) CONCAT SUBSTR(MMACRF,2,2) CONCAT SUBSTR(MMITCL,1,2),A.MBWHLO
+ 
+from (mvxcdta.mitmas b join mvxcdta.mitbal a on (mmcono = mbcono) and (mmitno = mbitno)
+     left outer join mvxcdta.mptawy c ON (MBITNO = NOITNO) AND (MBWHLO = NOWHLO) AND (MBCONO = NOCONO) and nostat = '20')
+     left outer join mvxcdta.mitloc d on (mbitno = mlitno) and (mbwhlo = mlwhlo) and (mbcono = mlcono) and (mlstas = 2) and mlwhsl =((select mswhsl from mvxcdta.mitpce g where mseds1='1' and mscono='1' and mswhlo in ('MF1','VN1') and d.mlwhlo=g.mswhlo and d.mlwhsl=g.mswhsl))
+     left outer join pfxcdta.xitapi e on ((mbitno = xiitno) and (mbwhlo = xiwhlo) and (mbcono = xicono))
+     left join pfxcdta.xitapg on (xicono = xgcono) and (xiwhlo = xgwhlo) and (xifgrp = xgfgrp) 
+   
+   WHERE
+ 
+   @WCOL = A.MBCONO                      ;DEC 3,0   ;                                        ;TDBSTR.IDBCMP    ;       ; Company
+           AND A.MBWHLO IN ('MF1','VN1')
+           AND A.MBPUIT = 3
+           AND A.MBSUWH NOT IN ('VN1','MF1','Z01', 'Z02', 'Z11', 'Z21','Z31')
+           AND B.MMSTAT BETWEEN '00' AND '99'
+           AND B.MMITNO BETWEEN '000000' AND '999999'
+           AND A.MBWHSY <> 'F'
+	            
+  
+group by MBWHLO,MBITNO,XIFGRP,XGOFTM,MBLEAT,MBSTQT,MBALQT,MMITDS,MBPUIT,MBMXST,MBSSQT,MBCHNO,MBLEVL,MBPFTM,MMITGR,MMITCL,MMNEWE,MMGRWE,MMVOL3,MBABCD,MBBUYE,MBSATD,MMACRF,MBSESO
+
+ !------------------------------------------------------------------------------
+! INFORMATION ITEMS ITEMS (MBPUIT=3 external DOP AND MBWHSY <> 'F' AND MBWHLO = MF1 AND MBSUWH = Z*) Non-seasonal
+ !------------------------------------------------------------------------------
+
+UNION SELECT a.MBITNO,
+             a.MBITNO,
+             a.MBITNO,
+              case when XIFGRP is null then 'D' CONCAT a.mbitno else XIFGRP end,
+              case when XGOFTM is null then 2400 else xgoftm*2400 end,
+              MBLEAT,MBSTQT,
+              sum(it),
+              MMITDS,'I',MBPUIT,MBMXST,MBSSQT,MBCHNO,MBLEVL,
+              MBPFTM,MMITGR,MMITCL,MMNEWE,MMGRWE,MMVOL3,MBABCD,MBBUYE,0,0,SUBSTR(MMITGR,1,5) CONCAT SUBSTR(MMACRF,2,2) CONCAT SUBSTR(MMITCL,1,2),A.MBWHLO
+
+from mvxcdta.mitmas b join mvxcdta.mitbal a on (mmcono = mbcono) and (mmitno = a.mbitno)
+left outer join (select distinct case when sum(notrqt) is null then case when sum(mlstqt) is null then MBstqt-MBALQT else MBstqt-MBALQT-sum(mlstqt)+sum(mlalqt) end else case when sum(mlstqt) is null then MBstqt-MBALQT+sum(notrqt) else MBstqt-MBALQT+sum(notrqt)-sum(mlstqt)+sum(mlalqt) end end as it, mbitno
+from (mvxcdta.mitbal h
+     left outer join mvxcdta.mptawy c ON (h.MBITNO = NOITNO) AND (MBWHLO = NOWHLO) AND (MBCONO = NOCONO) and nostat = '20')
+     left outer join mvxcdta.mitloc d on (h.mbitno = mlitno) and (mbwhlo = mlwhlo) and (mbcono = mlcono) and (mlstas = 2) and mlwhsl =((select mswhsl from mvxcdta.mitpce g where mseds1='1' and mscono='1' and mswhlo='MF1'and d.mlwhsl=g.mswhsl))
+where MBcono=1 and MBWHLO in ('Z01', 'Z02', 'Z11', 'Z21', 'Z31', 'MF1') and MBSTAT between '20' and '80' and MBitno in (select MBITNO from MVXCDTA.MITBAL where MBcono=1 and MBWHLO='MF1' and MBSTAT between '20' and '80' and MBSUWH in ('Z01', 'Z02', 'Z11', 'Z21', 'Z31'))
+group by MBITNO, MBSTQT, MBALQT
+order by MBitno) x on (mmitno=x.mbitno)
+     left outer join pfxcdta.xitapi e on ((a.mbitno = xiitno) and (mbwhlo = xiwhlo) and (mbcono = xicono))
+     left join pfxcdta.xitapg on (xicono = xgcono) and (xiwhlo = xgwhlo) and (xifgrp = xgfgrp)
+
+
+   WHERE
+
+   @WCOL = A.MBCONO ;DEC 3,0   ;                                        ;TDBSTR.IDBCMP    ;       ; Company
+           AND A.MBWHLO IN ('MF1')
+           AND A.MBPUIT = 3
+           AND A.MBSUWH IN ('Z01', 'Z02', 'Z11', 'Z21','Z31')
+           AND B.MMSTAT BETWEEN '00' AND '99'
+           AND B.MMITNO BETWEEN '000000' AND '999999'
+           AND A.MBWHSY <> 'F'
+           AND A.MBSESO <> 1
+
+
+group by MBWHLO,a.MBITNO,XIFGRP,XGOFTM,MBLEAT,MBSTQT,MBALQT,MMITDS,MBPUIT,MBMXST,MBSSQT,MBCHNO,MBLEVL,MBPFTM,MMITGR,MMITCL,MMNEWE,MMGRWE,MMVOL3,MBABCD,MBBUYE,MBSATD,MMACRF
+
+
+
+ !------------------------------------------------------------------------------
+! PURCHASE ITEMS ITEMS (MBPUIT=3 external DOP AND MBWHSY <> 'F' AND MBWHLO = MF1 AND MBSUWH = Z*) Seasonal
+ !------------------------------------------------------------------------------
+
+UNION SELECT a.MBITNO,
+              a.MBITNO,
+              a.MBITNO,
+              case when XIFGRP is null then 'D' CONCAT a.mbitno else XIFGRP end,
+              case when XGOFTM is null then 2400 else xgoftm*2400 end,
+              MBLEAT,MBSTQT,
+              sum(it),
+              MMITDS,'P',MBPUIT,MBMXST,MBSSQT,MBCHNO,MBLEVL,
+              MBPFTM,MMITGR,MMITCL,MMNEWE,MMGRWE,MMVOL3,MBABCD,MBBUYE,0,0,SUBSTR(MMITGR,1,5) CONCAT SUBSTR(MMACRF,2,2) CONCAT SUBSTR(MMITCL,1,2),A.MBWHLO
+
+from mvxcdta.mitmas b join mvxcdta.mitbal a on (mmcono = mbcono) and (mmitno = a.mbitno)
+left outer join (select distinct case when sum(notrqt) is null then case when sum(mlstqt) is null then MBstqt-MBALQT else MBstqt-MBALQT-sum(mlstqt)+sum(mlalqt) end else case when sum(mlstqt) is null then MBstqt-MBALQT+sum(notrqt) else MBstqt-MBALQT+sum(notrqt)-sum(mlstqt)+sum(mlalqt) end end as it, mbitno
+from (mvxcdta.mitbal h
+     left outer join mvxcdta.mptawy c ON (h.MBITNO = NOITNO) AND (MBWHLO = NOWHLO) AND (MBCONO = NOCONO) and nostat = '20')
+     left outer join mvxcdta.mitloc d on (h.mbitno = mlitno) and (mbwhlo = mlwhlo) and (mbcono = mlcono) and (mlstas = 2) and mlwhsl =((select mswhsl from mvxcdta.mitpce g where mseds1='1' and mscono='1' and mswhlo='MF1'and d.mlwhsl=g.mswhsl))
+where MBcono=1 and MBWHLO in ('Z01', 'Z02', 'Z11', 'Z21', 'Z31', 'MF1') and MBSTAT between '20' and '80' and MBitno in (select MBITNO from MVXCDTA.MITBAL where MBcono=1 and MBWHLO='MF1' and MBSTAT between '20' and '80' and MBSUWH in ('Z01', 'Z02', 'Z11', 'Z21', 'Z31'))
+group by MBITNO, MBSTQT, MBALQT
+order by MBitno) x on (mmitno=x.mbitno)
+     left outer join pfxcdta.xitapi e on ((a.mbitno = xiitno) and (mbwhlo = xiwhlo) and (mbcono = xicono))
+     left join pfxcdta.xitapg on (xicono = xgcono) and (xiwhlo = xgwhlo) and (xifgrp = xgfgrp)
+
+
+   WHERE
+
+   @WCOL = A.MBCONO ;DEC 3,0   ;                                        ;TDBSTR.IDBCMP    ;       ; Company
+           AND A.MBWHLO IN ('MF1')
+           AND A.MBPUIT = 3
+           AND A.MBSUWH IN ('Z01', 'Z02', 'Z11', 'Z21','Z31')
+           AND B.MMSTAT BETWEEN '00' AND '99'
+           AND B.MMITNO BETWEEN '000000' AND '999999'
+           AND A.MBWHSY <> 'F'
+           AND A.MBSESO=1
+
+group by MBWHLO,a.MBITNO,XIFGRP,XGOFTM,MBLEAT,MBSTQT,MBALQT,MMITDS,MBPUIT,MBMXST,MBSSQT,MBCHNO,MBLEVL,MBPFTM,MMITGR,MMITCL,MMNEWE,MMGRWE,MMVOL3,MBABCD,MBBUYE,MBSATD,MMACRF
+
+
+ !------------------------------------------------------------------------------
+ ! DOP Items ITEMS (MBPUIT=3, MBWHSY = 'F').
+ !------------------------------------------------------------------------------
+  
+ UNION SELECT MBITNO,
+              MBITNO,
+              MBITNO,
+              case when XIFGRP is null then 'D' CONCAT mbitno else XIFGRP end,
+              case when XGOFTM is null then 2400 else xgoftm*2400 end,
+              MBLEAT,MBSTQT,
+              case when sum(notrqt) is null then case when sum(mlstqt) is null then (MBstqt-MBALQT) else (MBstqt-MBALQT-sum(mlstqt)+sum(mlalqt)) end else case when sum(mlstqt) is null then (MBstqt-MBALQT+sum(notrqt)) else (MBstqt-MBALQT+sum(notrqt)-sum(mlstqt)+sum(mlalqt)) end end,
+              MMITDS,'I',MBPUIT,MBMXST,MBSSQT,MBCHNO,MBLEVL,
+              MBPFTM,MMITGR,MMITCL,MMNEWE,MMGRWE,MMVOL3,MBABCD,MBBUYE,0,0,SUBSTR(MMITGR,1,5) CONCAT SUBSTR(MMACRF,2,2) CONCAT SUBSTR(MMITCL,1,2),A.MBWHLO
+ 
+from (mvxcdta.mitmas b join mvxcdta.mitbal a on (mmcono = mbcono) and (mmitno = mbitno)
+     left outer join mvxcdta.mptawy c ON (MBITNO = NOITNO) AND (MBWHLO = NOWHLO) AND (MBCONO = NOCONO) and nostat = '20')
+     left outer join mvxcdta.mitloc d on (mbitno = mlitno) and (mbwhlo = mlwhlo) and (mbcono = mlcono) and (mlstas = 2) and mlwhsl =((select mswhsl from mvxcdta.mitpce g where mseds1='1' and mscono='1' and mswhlo in ('MF1','VN1') and d.mlwhlo=g.mswhlo and d.mlwhsl=g.mswhsl))
+     left outer join pfxcdta.xitapi e on ((mbitno = xiitno) and (mbwhlo = xiwhlo) and (mbcono = xicono))
+     left join pfxcdta.xitapg on (xicono = xgcono) and (xiwhlo = xgwhlo) and (xifgrp = xgfgrp)
+   
+   WHERE
+ 
+   @WCOL = A.MBCONO                      ;DEC 3,0   ;                                        ;TDBSTR.IDBCMP    ;       ; Company
+           AND A.MBWHLO IN ('MF1','VN1')
+           AND A.MBPUIT = 3
+           AND B.MMSTAT BETWEEN '00' AND '99'
+           AND B.MMITNO BETWEEN '000000' AND '999999'
+           AND A.MBWHSY = 'F'
+	            
+  
+group by MBWHLO,MBITNO,XIFGRP,XGOFTM,MBLEAT,MBSTQT,MBALQT,MMITDS,MBPUIT,MBMXST,MBSSQT,MBCHNO,MBLEVL,MBPFTM,MMITGR,MMITCL,MMNEWE,MMGRWE,MMVOL3,MBABCD,MBBUYE,MBSATD,MMACRF
+
+
+!------------------------------------------------------------------------------
+! PURCHASED ITEMS (MBPUIT<> 1, 3. MBWHSY NOT 'F').
+!------------------------------------------------------------------------------
+ 
+ UNION SELECT a.MBITNO,
+              a.MBITNO,
+              a.MBITNO,
+              case when XIFGRP is null then mbitno else XIFGRP end,
+              case when XGOFTM is null then -999900 else xgoftm*2400 end,
+              MBLEAT,MBSTQT,
+              case when sum(notrqt) is null then case when sum(mlstqt) is null then (MBstqt-MBALQT) else (MBstqt-MBALQT-sum(mlstqt)+sum(mlalqt)) end else case when sum(mlstqt) is null then (MBstqt-MBALQT+sum(notrqt)) else (MBstqt-MBALQT+sum(notrqt)-sum(mlstqt)+sum(mlalqt)) end end,
+              MMITDS,case when MBitno='819828' then'I' else 'P' end,MBPUIT,MBMXST,MBSSQT,MBCHNO,MBLEVL,
+              MBPFTM,MMITGR,MMITCL,MMNEWE,MMGRWE,MMVOL3,MBABCD,MBBUYE,0,0,SUBSTR(MMITGR,1,5) CONCAT SUBSTR(MMACRF,2,2) CONCAT SUBSTR(MMITCL,1,2),A.MBWHLO
+
+from (mvxcdta.mitmas b join mvxcdta.mitbal a on (mmcono = mbcono) and (mmitno = mbitno)
+     left outer join mvxcdta.mptawy c ON (MBITNO = NOITNO) AND (MBWHLO = NOWHLO) AND (MBCONO = NOCONO) and nostat = '20')
+     left outer join mvxcdta.mitloc d on (mbitno = mlitno) and (mbwhlo = mlwhlo) and (mbcono = mlcono) and (mlstas = 2) and mlwhsl =((select mswhsl from mvxcdta.mitpce g where mseds1='1' and mscono='1' and mswhlo in ('MF1','VN1') and d.mlwhlo=g.mswhlo and d.mlwhsl=g.mswhsl))
+     left outer join pfxcdta.xitapi e on ((mbitno = xiitno) and (mbwhlo = xiwhlo) and (mbcono = xicono))
+     left join pfxcdta.xitapg on (xicono = xgcono) and (xiwhlo = xgwhlo) and (xifgrp = xgfgrp)
+
+  WHERE
+
+  @WCOL = A.MBCONO                      ;DEC 3,0   ;                                        ;TDBSTR.IDBCMP    ;       ; Company
+          AND A.MBWHLO IN ('MF1','VN1')
+          AND A.MBPUIT NOT IN (1,3)
+          AND B.MMSTAT BETWEEN '00' AND '89'
+          AND B.MMITNO BETWEEN '000000' AND '999999'
+          AND A.MBWHSY <> 'F'
+          AND A.MBPLCD <> '27' 
+	            
+
+group by MBWHLO,MBITNO,XIFGRP,XGOFTM,MBLEAT,MBSTQT,MBALQT,MMITDS,MBPUIT,MBMXST,MBSSQT,MBCHNO,MBLEVL,MBPFTM,MMITGR,MMITCL,MMNEWE,MMGRWE,MMVOL3,MBABCD,MBBUYE,MBSATD,MMACRF
+        
+          
+ !------------------------------------------------------------------------------
+ ! INFORMATION ITEMS ITEMS (MBPUIT<> 1, 3 AND MBWHSY = 'F' AND MBPLCD <> 'RL(27)').
+ !------------------------------------------------------------------------------
+  
+ UNION SELECT MBITNO,a.MBITNO,a.MBITNO,
+              case when XIFGRP is null then mbitno else XIFGRP end,
+              case when XGOFTM is null then -999900 else xgoftm*2400 end,
+              MBLEAT,MBSTQT,
+              case when sum(notrqt) is null then case when sum(mlstqt) is null then (MBstqt-MBALQT) else (MBstqt-MBALQT-sum(mlstqt)+sum(mlalqt)) end else case when sum(mlstqt) is null then (MBstqt-MBALQT+sum(notrqt)) else (MBstqt-MBALQT+sum(notrqt)-sum(mlstqt)+sum(mlalqt)) end end,
+              MMITDS,'I',MBPUIT,MBMXST,MBSSQT,MBCHNO,MBLEVL,
+              MBPFTM,MMITGR,MMITCL,MMNEWE,MMGRWE,MMVOL3,MBABCD,MBBUYE,0,0,SUBSTR(MMITGR,1,5) CONCAT SUBSTR(MMACRF,2,2) CONCAT SUBSTR(MMITCL,1,2),A.MBWHLO
+ 
+from (mvxcdta.mitmas b join mvxcdta.mitbal a on (mmcono = mbcono) and (mmitno = mbitno)
+     left outer join mvxcdta.mptawy c ON (MBITNO = NOITNO) AND (MBWHLO = NOWHLO) AND (MBCONO = NOCONO) and nostat = '20')
+     left outer join mvxcdta.mitloc d on (mbitno = mlitno) and (mbwhlo = mlwhlo) and (mbcono = mlcono) and (mlstas = 2) and mlwhsl =((select mswhsl from mvxcdta.mitpce g where mseds1='1' and mscono='1' and mswhlo in ('MF1','VN1') and d.mlwhlo=g.mswhlo and d.mlwhsl=g.mswhsl))
+     left outer join pfxcdta.xitapi e on ((mbitno = xiitno) and (mbwhlo = xiwhlo) and (mbcono = xicono))
+     left join pfxcdta.xitapg on (xicono = xgcono) and (xiwhlo = xgwhlo) and (xifgrp = xgfgrp)
+ 
+   WHERE
+ 
+   @WCOL = A.MBCONO                      ;DEC 3,0   ;                                        ;TDBSTR.IDBCMP    ;       ; Company
+           AND A.MBWHLO IN ('MF1','VN1')
+           AND A.MBPUIT NOT IN (1,3)
+           AND B.MMSTAT BETWEEN '00' AND '99'
+           AND B.MMITNO BETWEEN '000000' AND '999999'
+           AND A.MBWHSY IN ('F', 'B')
+           AND A.MBPLCD <> '27' 
+	            
+  
+group by MBWHLO,MBITNO,XIFGRP,XGOFTM,MBLEAT,MBSTQT,MBALQT,MMITDS,MBPUIT,MBMXST,MBSSQT,MBCHNO,MBLEVL,MBPFTM,MMITGR,MMITCL,MMNEWE,MMGRWE,MMVOL3,MBABCD,MBBUYE,MBSATD,MMACRF
+
+ 
+ !------------------------------------------------------------------------------
+! INFORMATION ITEMS ITEMS (MBPUIT<> 1, 3 AND MBPLCD = '27'). Non-seasonal
+ !------------------------------------------------------------------------------
+  
+ UNION SELECT A.MBITNO,a.MBITNO,a.MBITNO,
+              case when XIFGRP is null then mbitno else XIFGRP end,
+              case when XGOFTM is null then -999900 else xgoftm*2400 end,
+              MBLEAT,MBSTQT,
+              case when sum(notrqt) is null then case when sum(mlstqt) is null then (MBstqt-MBALQT) else (MBstqt-MBALQT-sum(mlstqt)+sum(mlalqt)) end else case when sum(mlstqt) is null then (MBstqt-MBALQT+sum(notrqt)) else (MBstqt-MBALQT+sum(notrqt)-sum(mlstqt)+sum(mlalqt)) end end,
+              MMITDS,'I',MBPUIT,MBMXST,MBSSQT,MBCHNO,MBLEVL,
+              MBPFTM,MMITGR,MMITCL,MMNEWE,MMGRWE,MMVOL3,MBABCD,MBBUYE,0,0,SUBSTR(MMITGR,1,5) CONCAT SUBSTR(MMACRF,2,2) CONCAT SUBSTR(MMITCL,1,2),A.MBWHLO
+ 
+from (mvxcdta.mitmas b join mvxcdta.mitbal a on (mmcono = mbcono) and (mmitno = mbitno)
+     left outer join mvxcdta.mptawy c ON (MBITNO = NOITNO) AND (MBWHLO = NOWHLO) AND (MBCONO = NOCONO) and nostat = '20')
+     left outer join mvxcdta.mitloc d on (mbitno = mlitno) and (mbwhlo = mlwhlo) and (mbcono = mlcono) and (mlstas = 2) and mlwhsl =((select mswhsl from mvxcdta.mitpce g where mseds1='1' and mscono='1' and mswhlo='MF1'and d.mlwhsl=g.mswhsl))
+     left outer join pfxcdta.xitapi e on ((mbitno = xiitno) and (mbwhlo = xiwhlo) and (mbcono = xicono))
+     left join pfxcdta.xitapg on (xicono = xgcono) and (xiwhlo = xgwhlo) and (xifgrp = xgfgrp)
+ 
+   WHERE
+ 
+   @WCOL = A.MBCONO                      ;DEC 3,0   ;                                        ;TDBSTR.IDBCMP    ;       ; Company
+           AND A.MBWHLO IN ('MF1')
+           AND A.MBPUIT NOT IN (1,3)
+           AND B.MMSTAT BETWEEN '00' AND '99'
+           AND B.MMITNO BETWEEN '000000' AND '999999'
+           AND A.MBPLCD = '27' 
+           AND A.MBSESO <> 1
+	            
+  
+group by MBWHLO,MBITNO,XIFGRP,XGOFTM,MBLEAT,MBSTQT,MBALQT,MMITDS,MBPUIT,MBMXST,MBSSQT,MBCHNO,MBLEVL,MBPFTM,MMITGR,MMITCL,MMNEWE,MMGRWE,MMVOL3,MBABCD,MBBUYE,MBSATD,MMACRF
+
+ !------------------------------------------------------------------------------
+ ! SEASONAL INFORMATION ITEMS ITEMS (MBPUIT<> 1, 3 AND MBPLCD = 'RL(27)').
+ !------------------------------------------------------------------------------
+  
+ UNION SELECT A.MBITNO,a.MBITNO,a.MBITNO,
+              case when XIFGRP is null then mbitno else XIFGRP end,
+              case when XGOFTM is null then -999900 else xgoftm*2400 end,
+              MBLEAT,MBSTQT,
+              case when sum(notrqt) is null then case when sum(mlstqt) is null then (MBstqt-MBALQT) else (MBstqt-MBALQT-sum(mlstqt)+sum(mlalqt)) end else case when sum(mlstqt) is null then (MBstqt-MBALQT+sum(notrqt)) else (MBstqt-MBALQT+sum(notrqt)-sum(mlstqt)+sum(mlalqt)) end end,
+              MMITDS,'P',MBPUIT,MBMXST,MBSSQT,MBCHNO,MBLEVL,
+              MBPFTM,MMITGR,MMITCL,MMNEWE,MMGRWE,MMVOL3,MBABCD,MBBUYE,0,0,SUBSTR(MMITGR,1,5) CONCAT SUBSTR(MMACRF,2,2) CONCAT SUBSTR(MMITCL,1,2),A.MBWHLO
+ 
+from (mvxcdta.mitmas b join mvxcdta.mitbal a on (mmcono = mbcono) and (mmitno = mbitno)
+     left outer join mvxcdta.mptawy c ON (MBITNO = NOITNO) AND (MBWHLO = NOWHLO) AND (MBCONO = NOCONO) and nostat = '20')
+     left outer join mvxcdta.mitloc d on (mbitno = mlitno) and (mbwhlo = mlwhlo) and (mbcono = mlcono) and (mlstas = 2) and mlwhsl =((select mswhsl from mvxcdta.mitpce g where mseds1='1' and mscono='1' and mswhlo in ('MF1','VN1') and d.mlwhlo=g.mswhlo and d.mlwhsl=g.mswhsl))
+     left outer join pfxcdta.xitapi e on ((mbitno = xiitno) and (mbwhlo = xiwhlo) and (mbcono = xicono))
+     left join pfxcdta.xitapg on (xicono = xgcono) and (xiwhlo = xgwhlo) and (xifgrp = xgfgrp)
+ 
+   WHERE
+ 
+   @WCOL = A.MBCONO                      ;DEC 3,0   ;                                        ;TDBSTR.IDBCMP    ;       ; Company
+           AND A.MBWHLO IN ('MF1','VN1')
+           AND A.MBPUIT NOT IN (1,3)
+           AND B.MMSTAT BETWEEN '00' AND '99'
+           AND B.MMITNO BETWEEN '000000' AND '999999'
+           AND A.MBPLCD = '27'
+	   AND A.MBSESO = 1
+	            
+  
+group by MBWHLO,MBITNO,XIFGRP,XGOFTM,MBLEAT,MBSTQT,MBALQT,MMITDS,MBPUIT,MBMXST,MBSSQT,MBCHNO,MBLEVL,MBPFTM,MMITGR,MMITCL,MMNEWE,MMGRWE,MMVOL3,MBABCD,MBBUYE,MBSATD,MMACRF
+
+ !------------------------------------------------------------------------------
+! INTERNAL ITEMS ITEMS (MBPUIT=3 , internal DOP, not MBWHSY = 'F')).
+ !------------------------------------------------------------------------------
+
+Union Select
+A.MBITNO,
+              A.MBITNO,
+              A.MBITNO,
+              case when XIFGRP is null then 'D' CONCAT mbitno else XIFGRP end,
+              case when XGOFTM is null then -999900 else xgoftm*2400 end,
+              MBLEAT,MBSTQT,
+              case when sum(notrqt) is null then case when sum(mlstqt) is null then (MBstqt-MBALQT) else (MBstqt-MBALQT-sum(mlstqt)+sum(mlalqt)) end else case when sum(mlstqt) is null then (MBstqt-MBALQT+sum(notrqt)) else (MBstqt-MBALQT+sum(notrqt)-sum(mlstqt)+sum(mlalqt)) end end,
+              MMITDS,'M',MBPUIT,MBMXST,MBSSQT,MBCHNO,MBLEVL,
+              MBPFTM,MMITGR,MMITCL,MMNEWE,MMGRWE,MMVOL3,MBABCD,MBBUYE,0,cast (case when ZBCFI2 in ('50','55','60','61','70','71','72') then  ZBCFI2 else 0 end as int),SUBSTR(MMITGR,1,5) CONCAT SUBSTR(MMACRF,2,2) CONCAT SUBSTR(MMITCL,1,2),A.MBWHLO
+
+from (mvxcdta.mitmas b join mvxcdta.mitbal a on (mmcono = mbcono) and (mmitno = mbitno)
+     left outer join mvxcdta.mptawy c ON (MBITNO = NOITNO) AND (MBWHLO = NOWHLO) AND (MBCONO = NOCONO) and nostat = '20')
+     left outer join mvxcdta.mitloc d on (mbitno = mlitno) and (mbwhlo = mlwhlo) and (mbcono = mlcono) and (mlstas = 2) and mlwhsl =((select mswhsl from mvxcdta.mitpce g where mseds1='1' and mscono='1' and mswhlo='MF1'and d.mlwhsl=g.mswhsl))
+     left outer join pfxcdta.xitapi e on ((mbitno = xiitno) and (mbwhlo = xiwhlo) and (mbcono = xicono))
+     left join pfxcdta.xitapg on (xicono = xgcono) and (xiwhlo = xgwhlo) and (xifgrp = xgfgrp)
+     left outer join pfxcdta.zitbalC0 g on (MBITNO=ZBITNO and MBCONO=ZBCONO and MBWHLO=ZBWHLO)
+
+   WHERE
+
+  
+   @WCOL = A.MBCONO                      ;DEC 3,0   ;                                        ;TDBSTR.IDBCMP    ;       ; Company
+           AND A.MBWHLO IN ('GD1')
+           AND A.MBPUIT = 3
+           AND A.MBSUWH IN ('VN1','MF1')
+           AND B.MMSTAT BETWEEN '00' AND '99'
+           AND B.MMITNO BETWEEN '000000' AND '999999'
+           AND A.MBWHSY <> 'F'
+           AND A.MBSTAT <80
+           AND A.MBSTAT >=20
+group by MBWHLO,MBITNO,XIFGRP,XGOFTM,MBLEAT,MBSTQT,MBALQT,MMITDS,MBPUIT,MBMXST,MBSSQT,MBCHNO,MBLEVL,MBPFTM,MMITGR,MMITCL,MMNEWE,MMGRWE,MMVOL3,MBABCD,MBBUYE,MBSATD,MMACRF,ZBCFI2
+
+!------------------------------------------------------------------------------
+! INTERNAL ITEMS ITEMS (MBPUIT=3 , internal DOP, not MBWHSY = 'F')).
+!------------------------------------------------------------------------------
+Union Select
+	      A.MBITNO,
+              A.MBITNO,
+              A.MBITNO,
+              case when XIFGRP is null then 'D' CONCAT mbitno else XIFGRP end,
+              case when XGOFTM is null then -999900 else xgoftm*2400 end,
+              MBLEAT,MBSTQT,
+              case when sum(notrqt) is null then case when sum(mlstqt) is null then (MBstqt-MBALQT) else (MBstqt-MBALQT-sum(mlstqt)+sum(mlalqt)) end else case when sum(mlstqt) is null then (MBstqt-MBALQT+sum(notrqt)) else (MBstqt-MBALQT+sum(notrqt)-sum(mlstqt)+sum(mlalqt)) end end,
+              MMITDS,'P',MBPUIT,MBMXST,MBSSQT,MBCHNO,MBLEVL,
+              MBPFTM,MMITGR,MMITCL,MMNEWE,MMGRWE,MMVOL3,MBABCD,MBBUYE,0,cast (case when ZBCFI2 in ('50','55','60','61','70','71','72') then  ZBCFI2 else 0 end as int),SUBSTR(MMITGR,1,5) CONCAT SUBSTR(MMACRF,2,2) CONCAT SUBSTR(MMITCL,1,2), A.MBWHLO
+
+from (mvxcdta.mitmas b join mvxcdta.mitbal a on (mmcono = mbcono) and (mmitno = mbitno)
+     left outer join mvxcdta.mptawy c ON (MBITNO = NOITNO) AND (MBWHLO = NOWHLO) AND (MBCONO = NOCONO) and nostat = '20')
+     left outer join mvxcdta.mitloc d on (mbitno = mlitno) and (mbwhlo = mlwhlo) and (mbcono = mlcono) and (mlstas = 2) and mlwhsl =((select mswhsl from mvxcdta.mitpce g where mseds1='1' and mscono='1' and mswhlo='MF1'and d.mlwhsl=g.mswhsl))
+     left outer join pfxcdta.xitapi e on ((mbitno = xiitno) and (mbwhlo = xiwhlo) and (mbcono = xicono))
+     left join pfxcdta.xitapg on (xicono = xgcono) and (xiwhlo = xgwhlo) and (xifgrp = xgfgrp)
+     left outer join pfxcdta.zitbalC0 g on (MBITNO=ZBITNO and MBCONO=ZBCONO and MBWHLO=ZBWHLO)
+
+   WHERE
+
+       @WCOL = A.MBCONO                      ;DEC 3,0   ;                                        ;TDBSTR.IDBCMP    ;       ; Company
+           AND A.MBWHLO IN ('GD1')
+           AND A.MBPUIT = 3
+           AND A.MBSUWH NOT IN ('VN1','MF1')
+           AND B.MMSTAT BETWEEN '00' AND '99'
+           AND B.MMITNO BETWEEN '000000' AND '999999'
+           AND A.MBWHSY <> 'F'
+           AND A.MBSTAT <80
+           AND A.MBSTAT >=20
+group by MBWHLO,MBITNO,XIFGRP,XGOFTM,MBLEAT,MBSTQT,MBALQT,MMITDS,MBPUIT,MBMXST,MBSSQT,MBCHNO,MBLEVL,MBPFTM,MMITGR,MMITCL,MMNEWE,MMGRWE,MMVOL3,MBABCD,MBBUYE,MBSATD,MMACRF,ZBCFI2
+
+!------------------------------------------------------------------------------
+! EXPORT ITEMS.
+!------------------------------------------------------------------------------
+ 
+[EXPORT::ITEM]
+
+ @TITLE = Export items
+ 
+ @CONVERTCHARS
+ 
+ @SKIP
+
+
+!------------------------------------------------------------------------------
+! IMPORT STOCK.
+!------------------------------------------------------------------------------
+
+[IMPORT::SKRE]
+
+  @TITLE = Import stock
+
+  @CONVERTCHARS
+  
+  @SKIP
+
+
+!------------------------------------------------------------------------------
+! EXPORT STOCK.
+!------------------------------------------------------------------------------
+
+[EXPORT::SKRE]
+
+  @TITLE = Export stock
+
+  @CONVERTCHARS
+  
+  @SKIP  
+
+
+!------------------------------------------------------------------------------
+! IMPORT SECONDARY SUPPLIES.
+!------------------------------------------------------------------------------
+
+[SSUP]
+
+  @TITLE = Import secondary supplies
+
+  @CONVERTCHARS
+  
+  @SKIP
+
+
+!------------------------------------------------------------------------------
+! EXPORT SECONDARY SUPPLIES.
+!------------------------------------------------------------------------------
+
+[EXPORT::SSUP]
+
+  @TITLE = Export secondary supplies
+
+  @CONVERTCHARS
+  
+  @SKIP
+
+
+!------------------------------------------------------------------------------
+! IMPORT PREALLOCATIONS.
+!------------------------------------------------------------------------------
+
+[PALL]
+
+  @TITLE = Import preallocations
+
+  @CONVERTCHARS
+  
+  @SKIP
+
+
+!------------------------------------------------------------------------------
+! EXPORT PREALLOCATIONS.
+!------------------------------------------------------------------------------
+
+[EXPORT::PALL]
+
+  @TITLE = Export preallocations
+
+  @CONVERTCHARS
+  
+  @SKIP
+
+
+!------------------------------------------------------------------------------
+! IMPORT EXTERNAL SUPPLIES.
+!------------------------------------------------------------------------------
+ 
+[PURC]
+ 
+ @TITLE = Import external supplies
+ 
+ @CONVERTCHARS
+ 
+SELECT DISTINCT
+
+  @COL  = MOWHLO                        ;CHAR      ;                                        ;TPUREG.CPUWAR    ;       ;Warehouse
+  @COL  = MOITNO                        ;CHAR      ;                                        ;TPUREG.CPUITM    ;       ;Item number
+  @COL  = RRN(A)                        ;INT       ;                                        ;TPUREG.MPUMRP    ;       ;Order number
+  @COL  = ' '                           ;CHAR      ;                                        ;TPUREG.CPUPEG    ;       ;Order Number (APP Peg ID)
+  @COL  = MOORCA                        ;INT       ;                                        ;TPUREG.CPUORC    ;       ;Order category
+  @COL  = ABS(MOTRQT)                   ;FLOAT     ;                                        ;TPUREG.RPUQTY    ;       ;Quantity
+  @COL  = case when MOORCA <> 251 then MOPLDT else case when (MOSTAT > 34 and TO_DATE(CAST(MOPLDT AS VARCHAR(10)),'YYYYMMDD') > CURRent DATE + 84 days) then cast((CURRent DATE + 84 days )as bigint) when (MOSTAT <= 34 and TO_DATE(CAST(MOPLDT AS VARCHAR(10)),'YYYYMMDD') > CURRent DATE + 84 days) then cast((CURRent DATE + 84 days )as bigint) when (MOSTAT <= 34 and TO_DATE(CAST(MOPLDT AS VARCHAR(10)),'YYYYMMDD') < CURRent DATE + 14 days) then cast((CURRent DATE + 14 days )as bigint) else MOPLDT end end                 ;INT       ;XD2PMS                                  ;TPUREG.MPULDD    ;       ;Due date
+  @COL  = MOTIHM*100                    ;INT       ;XT2PMS                                  ;TPUREG.MPULDD    ;       ;Due date
+  @COL  = MOSTAT                        ;INT       ;                                        ;TPUREG.CPUSTA    ;       ;Status
+  @COL  = MMITDS                        ;CHAR      ;                                        ;TPUREG.CPUDES    ;       ;Item description
+  @COL  = MORIDI                        ;CHAR      ;                                        ;TPUREG.CPURID    ;       ;Order index.
+  @COL  = MORFTX                        ;CHAR      ;                                        ;TPUREG.CPUDES    ;       ;Description.
+  @COL  = MORIDN                        ;CHAR      ;                                        ;TPUREG.CPUEOI    ;       ;External order id.
+  @COL  = MORIDL                        ;CHAR      ;                                        ;TPUREG.MPURID    ;       ;Order line.
+  @COL  = MORIDL/1000                   ;CHAR      ;                                        ;TPUREG.MPUEOL    ;       ;External order line.
+  @COL  = 0                             ;CHAR      ;                                        ;TPUREG.CPUROI    ;       ;Reference order id.
+  @COL  = 0                             ;CHAR      ;                                        ;TPUREG.MPUROL    ;       ;Reference order line.
+  @COL  = 0                             ;CHAR      ;                                        ;TPUREG.IPUROS    ;       ;Reference order suffix.
+  @COL  = substr (MORIDN,1,10) concat substr((1000000 + MORIDL),2,6) concat substr(MOORCA,1,1) concat substr((10000 + MORIDX),2,4) concat '    '                              ;CHAR      ;                          ;TPUREG.CPUANK   ;       ;
+FROM MVXCDTA.MITPLO A, MVXCDTA.MITMAS C, MVXCDTA.MITBAL B
+
+ WHERE
+
+! @WCOL = A.MOCONO IN (MF1, GD1)                    ;DEC 3,0   ;                                        ;TDBSTR.IDBCMP    ;       ;Company
+! @WCOL = AND A.MOWHLO                  ;CHAR      ;                                        ;TDBSTR.CDBWAR    ;       ;Warehouse
+         
+              A.MOCONO=1
+          AND A.MOWHLO in ('MF1','GD1','VN1')
+         !AND A.MOPLDT <= (YEAR(CURRENT DATE + 14 DAYS)*10000+MONTH(CURRENT DATE + 14 DAYS)*100+DAY(CURRENT DATE + 14 DAYS))
+          AND A.MOORCA IN ('120','121','251','401','601')
+          AND C.MMCONO = A.MOCONO
+          AND C.MMITNO = A.MOITNO
+          AND B.MBCONO = A.MOCONO
+          AND B.MBWHLO = A.MOWHLO
+          AND B.MBITNO = A.MOITNO
+          
+UNION SELECT DISTINCT
+
+   MOWHLO,
+   MOITNO,
+   RRN(A)                      ,
+  ' '                         ,
+  MOORCA                     ,
+   ABS(MOTRQT)               ,
+  case when MOSTAT > 34 then MOPLDT else case when TO_DATE(CAST(MOPLDT AS VARCHAR(10)),'YYYYMMDD') > CURRent DATE + 84 days then cast((CURRent DATE + 84 days )as bigint) when TO_DATE(CAST(MOPLDT AS VARCHAR(10)),'YYYYMMDD') < CURRent DATE + 14 days then cast((CURRent DATE + 14 days )as bigint) else MOPLDT  end   end ,
+
+   MOTIHM*100       ,
+   MOSTAT           ,
+   MMITDS           ,
+   MORIDI           ,
+   MORFTX           ,
+   MORIDN           ,
+   MORIDL           ,
+   MORIDL/1000      ,
+   0                ,
+   0                ,
+   0                ,
+  substr (MORIDN,1,10) concat substr((1000000 + MORIDL),2,6) concat substr(MOORCA,1,1) concat substr((10000 + MORIDX),2,4) concat '    '     
+FROM MVXCDTA.MITPLO A, MVXCDTA.MITMAS C, MVXCDTA.MITBAL B
+
+ WHERE
+
+! @WCOL = A.MOCONO IN (MF1, GD1)                    ;DEC 3,0   ;                                        ;TDBSTR.IDBCMP    ;       ;Company
+! @WCOL = AND A.MOWHLO                  ;CHAR      ;                                        ;TDBSTR.CDBWAR    ;       ;Warehouse
+         
+              A.MOCONO=1
+          AND A.MOWHLO in ('MF1','GD1','VN1')
+         !AND A.MOPLDT <= (YEAR(CURRENT DATE + 14 DAYS)*10000+MONTH(CURRENT DATE + 14 DAYS)*100+DAY(CURRENT DATE + 14 DAYS))
+          AND A.MOORCA IN ('500','501')
+          AND C.MMCONO = A.MOCONO
+          AND C.MMITNO = A.MOITNO
+          AND B.MBCONO = A.MOCONO
+          AND B.MBWHLO = A.MOWHLO
+          AND B.MBITNO = A.MOITNO
+          AND B.MBSUWH not in ('MF1','GD1','VN1')
+!------------------------------------------------------------------------------
+! EXPORT EXTERNAL SUPPLIES.
+!------------------------------------------------------------------------------
+ 
+[EXPORT::PURC]
+
+ @TITLE = Export external supplies
+ 
+ @CONVERTCHARS
+ 
+ @SKIP
+
+
+!------------------------------------------------------------------------------
+! IMPORT EXTERNAL REQUIREMENTS.
+!------------------------------------------------------------------------------
+ 
+[SALE]
+ 
+ @TITLE = Import external requirements
+ 
+ @CONVERTCHARS
+  
+ SELECT DISTINCT
+
+  @COL  = MOITNO     ;CHAR      ;        ;TSAREG.CSAITM    ;       ;Item number
+  @COL  = MOORCA                              ;INT       ;        ;TSAREG.CSAORC    ;       ;Order category
+  @COL  = RRN(A)                        ;INT       ;                                        ;TSAREG.MSAMRP    ;       ;Order number
+ 
+  @COL  = MOPLDT                              ;INT       ;XD2PMS  ;TSAREG.MSADSD    ;       ;Due date
+  @COL  = MOTIHM*100                          ;INT       ;XT2PMS  ;TSAREG.MSADSD    ;       ;Due date
+  @COL  = MOPLDT                              ;INT       ;XD2PMS  ;TSAREG.MSASBS    ;       ;Due date
+  @COL  = MOTIHM*100                          ;INT       ;XT2PMS  ;TSAREG.MSASBS    ;       ;Due date
+  @COL  = MOPRIO*0                              ;CHAR      ;                          ;TSAREG.MSAPRI   ;       ;Prio * 0
+  @COL  = MOSTAT                              ;CHAR      ;                          ;TSAREG.CSASTA   ;       ;Prio
+  @COL  = ' '                                 ;CHAR      ;                          ;TSAREG.CSAPEG   ;       ;Prio
+  @COL  = MORIDL                              ;CHAR      ;                          ;TSAREG.MSARID   ;       ;Prio
+  @COL  = MORIDI                              ;CHAR      ;                          ;TSAREG.CSARID   ;       ;Prio
+  @COL  = MORFTX                              ;CHAR      ;                          ;TSAREG.CSADES   ;       ;
+  @COL  = MOALQT                              ;FLOAT     ;                          ;TSAREG.RSAAQT   ;       ;
+  @COL  = MOACTP                              ;CHAR      ;                          ;TSAREG.CSAMSG   ;       ;
+  @COL  = ABS(MOTRQT)-MOALQT                  ;FLOAT     ;                          ;TSAREG.RSAQTY   ;       ;
+  @COL  = MORIDN                              ;CHAR      ;                          ;TSAREG.CSAEOI   ;       ;
+  @COL  = MORIDL                              ;CHAR      ;                          ;TSAREG.MSAEOL   ;       ;
+  @COL  = 0                                   ;INT       ;                          ;TSAREG.ISAEOS   ;       ;
+  @COL  = substr (MORIDN,1,10) concat substr((1000000 + MORIDL),2,6) concat substr(MOORCA,1,1) concat '        '                              ;CHAR      ;                          ;TSAREG.CSAANK   ;       ;
+  @COL  =  A.MOWHLO                           ;CHAR      ;                          ;TSAREG.CSAWAR    ;       ;Warehouse
+ FROM mvxcdta.MITPLO A, mvxcdta.MITMAS C
+
+ WHERE
+
+!  @WCOL = A.MOCONO                      ;DEC 3,0   ;                                        ;TDBSTR.IDBCMP    ;       ;Company
+!  @WCOL = AND A.MOWHLO                  ;CHAR      ;                                        ;TDBSTR.CDBWAR    ;       ;Warehouse
+ 
+ 
+              A.MOCONO = 1
+          AND A.MOWHLO = 'VN1'
+          AND A.MOORCA IN ('410','411','610','611')
+          AND C.MMCONO = A.MOCONO
+          AND C.MMITNO = A.MOITNO
+          and C.MMACRF <> '.6S'
+
+UNION
+
+select CO.XYITNO,
+       CO.XYORCA,
+       CO.XYRRN,
+       year(pfxcdta.dec2date(CO.XYDUDT) - CO.DATE_DIFF days)*10000 + month(pfxcdta.dec2date(CO.XYDUDT) - CO.DATE_DIFF days)*100 + day(pfxcdta.dec2date(CO.XYDUDT) - CO.DATE_DIFF days) AS XYMFDT,
+
+       CO.XYTIHM,
+       year(pfxcdta.dec2date(CO.XYD2DT) - CO.DATE_DIFF days)*10000 + month(pfxcdta.dec2date(CO.XYD2DT) - CO.DATE_DIFF days)*100 + day(pfxcdta.dec2date(CO.XYD2DT) - CO.DATE_DIFF days) AS XYMFDT,
+
+      CO.XYT2HM,
+ CO.XYPRIO, CO.XYSTAT, CO.XYBLANK, CO.XYRIDL,
+       CO.XYRIDI, CO.XYRFTX, CO.XYALQT, CO.XYACTP, CO.XYRNQT, CO.XYRIDN, CO.XYR2DL, CO.XYSuffix, CO.XYAKey,CO.XYWHLO
+
+from 
+ (SELECT DISTINCT
+
+  
+  A.MOITNO as XYITNO,
+  A.MOORCA as XYORCA,
+  RRN(A) as XYRRN,
+
+ case when (DWDWDT is null or DWDWDT =0)
+                 then case when B.MONNDT<>0 
+                           then B.MONNDT 
+                           else (DODLDT)
+                           end 
+                  else DWDWDT 
+                  end
+     
+           as XYDUDT,
+  A.MOTIHM*100 as XYTIHM,
+     case when (DWDWDT is null or DWDWDT =0)
+                 then case when B.MONNDT<>0 
+                           then B.MONNDT 
+                           else (DODLDT)
+                           end 
+                  else DWDWDT  
+                  end
+       
+        XYD2DT,
+
+  days(pfxcdta.dec2date(dodldt)) - days(pfxcdta.dec2date(A.MOPLDT)) AS DATE_DIFF,
+  A.MOTIHM*100 as XYT2HM,
+  8 as XYPRIO,
+  A.MOSTAT as XYSTAT,
+  ' ' as XYBLANK,
+  A.MORIDL as XYRIDL,
+  A.MORIDI as XYRIDI,
+  A.MORFTX as XYRFTX,
+  A.MOALQT as XYALQT,
+  A.MOACTP as XYACTP,
+  ABS(A.MOTRQT)-A.MOALQT as XYRNQT,
+  A.MORIDN as XYRIDN,
+  A.MORIDL as XYR2DL,
+  0 as XYSuffix,
+  substr (A.MORIDN,1,10) concat substr((1000000 + A.MORIDL),2,6) concat substr(A.MOORCA,1,1) concat '        ' as XYAKey,
+  A.MOWHLO as XYWHLO
+
+
+ FROM
+ mvxcdta.mitplo A
+ INNER JOIN MVXCDTA.MITPLO B ON ((A.MOITNO = B.MOITNO) AND (A.MOCONO = B.MOCONO) AND (A.MORIDN = B.MORIDN))
+ inner join mvxcdta.mitmas C on ((mmcono = A.mocono) and (A.moitno = mmitno))
+ Inner join mvxcdta.MITBAL D on ((mbcono = A.mocono) and (A.moitno = mbitno)and A.mowhlo=MBwhlo)
+ inner join mvxcdta.MDOPLP N on ((A.mocono = docono) and (A.moridn = digits(doplpn)))
+ left join pfxcdta.XDELCR G on ((XDCONO=A.MOCONO) and (XDWHLO=B.MOWHLO) and (XDORNO=A.MORIDN))
+ left join pfxcdta.DOPDWDT E on ((A.MOCONO=E.DWCONO) and (A.MOITNO=E.DWITNO) and (A.MOWHLO=E.DWWHLO) and A.MORIDN = E.DWTRNR)
+ WHERE
+
+        
+      A.MOCONO = 1  AND 
+      A.MOWHLO IN ('VN1') AND 
+      B.MOWHLO not in ('VN1','GD1')
+          AND A.MOORCA IN ('510')
+          and C.MMACRF <> '.0'
+            
+        ) CO
+  
+UNION
+
+SELECT DISTINCT
+
+  A.MOITNO,
+  A.MOORCA,
+  RRN(A),
+
+  case when (substr(A.MORFTX,10,4) = ' ')  then case when B.MONNDT<>0 then B.MONNDT else (DODLDT) end when (substr(A.MORFTX,10,4) = 'RQDT') then (Trim(substr(A.MORFTX,15,8))) else (DODLDT) end,
+  A.MOTIHM*100,
+  case when (substr(A.MORFTX,10,4) = ' ')  then case when B.MONNDT<>0 then B.MONNDT else (DODLDT) end when (substr(A.MORFTX,10,4) = 'RQDT') then (Trim(substr(A.MORFTX,15,8))) else (DODLDT) end,
+  A.MOTIHM*100,
+  8,
+  A.MOSTAT,
+  ' ',
+  A.MORIDL,
+  A.MORIDI,
+  A.MORFTX,
+  A.MOALQT,
+  B.MOACTP,
+  ABS(A.MOTRQT)-A.MOALQT as RNQT,
+  A.MORIDN,
+  A.MORIDL,
+  0 as Suffix,
+  substr (A.MORIDN,1,10) concat substr((1000000 + A.MORIDL),2,6) concat substr(A.MOORCA,1,1) concat '        ' as AKey,
+  A.MOWHLO 
+
+FROM
+MVXCDTA.MITMAS C
+INNER JOIN MVXCDTA.MITPLO A ON ((MMITNO = A.MOITNO) AND (MMCONO = A.MOCONO))
+INNER JOIN MVXCDTA.MITPLO B ON ((A.MOITNO = B.MOITNO) AND (A.MOCONO = B.MOCONO) AND (A.MORIDN = B.MORIDN))
+INNER JOIN MVXCDTA.MDOPLP D ON ((A.MOCONO=DOCONO) AND(A.MOITNO = DOITNO))
+LEFT JOIN (SELECT MBITNO
+             FROM MVXCDTA.MITBAL Z
+
+             WHERE Z.MBWHLO IN ('001','AD1','UD1') and Z.MBSUWH='GD1'
+             GROUP BY MBITNO) M On (MMITNO=M.MBITNO)
+WHERE
+
+             A.MOCONO = 1
+            AND D.DOFWHL = 'GD1'
+            AND A.MOORCA IN ('511')
+            AND B.MOORCA IN ('501')
+            AND C.MMCONO = D.DOCONO
+            AND C.MMITNO = D.DOITNO
+            AND A.MORIDN = DIGITS(D.DOPLPN)
+            AND C.MMACRF = '.6S'
+
+ 
+
+Union select CO.XYITNO,
+       CO.XYORCA,
+       CO.XYRRN,
+       year(pfxcdta.dec2date(CO.XYDUDT) - CO.DATE_DIFF days)*10000 + month(pfxcdta.dec2date(CO.XYDUDT) - CO.DATE_DIFF days)*100 + day(pfxcdta.dec2date(CO.XYDUDT) - CO.DATE_DIFF days) AS XYMFDT,
+
+       CO.XYTIHM,
+       year(pfxcdta.dec2date(CO.XYD2DT) - CO.DATE_DIFF days)*10000 + month(pfxcdta.dec2date(CO.XYD2DT) - CO.DATE_DIFF days)*100 + day(pfxcdta.dec2date(CO.XYD2DT) - CO.DATE_DIFF days) AS XYMFDT,
+
+      CO.XYT2HM,
+ CO.XYPRIO, CO.XYSTAT, CO.XYBLANK, CO.XYRIDL,
+       CO.XYRIDI, CO.XYRFTX, CO.XYALQT, CO.XYACTP, CO.XYRNQT, CO.XYRIDN, CO.XYR2DL, CO.XYSuffix, CO.XYAKey,CO.XYWHLO
+
+from 
+ (SELECT DISTINCT
+
+  
+  A.MOITNO as XYITNO,
+  A.MOORCA as XYORCA,
+  RRN(A) as XYRRN,
+     case when (DWDWDT is null or DWDWDT =0)
+                 then case when B.MONNDT<>0 
+                           then B.MONNDT 
+                           else (DODLDT)
+                           end 
+                  else DWDWDT 
+                  end
+     
+           as XYDUDT,
+  A.MOTIHM*100 as XYTIHM,
+     case when (DWDWDT is null or DWDWDT =0)
+                 then case when B.MONNDT<>0 
+                           then B.MONNDT 
+                           else (DODLDT)
+                           end 
+                  else DWDWDT  
+                  end
+       
+        XYD2DT,
+
+  days(pfxcdta.dec2date(dodldt)) - days(pfxcdta.dec2date(A.MOPLDT)) AS DATE_DIFF,
+  A.MOTIHM*100 as XYT2HM,
+  8 as XYPRIO,
+  A.MOSTAT as XYSTAT,
+  ' ' as XYBLANK,
+  A.MORIDL as XYRIDL,
+  A.MORIDI as XYRIDI,
+  A.MORFTX as XYRFTX,
+  A.MOALQT as XYALQT,
+  case when G.XDAVCT='1M' then '1M' else A.MOACTP end as XYACTP ,
+  ABS(A.MOTRQT)-A.MOALQT as XYRNQT,
+  A.MORIDN as XYRIDN,
+  A.MORIDL as XYR2DL,
+  0 as XYSuffix,
+  substr (A.MORIDN,1,10) concat substr((1000000 + A.MORIDL),2,6) concat substr(A.MOORCA,1,1) concat '        ' as XYAKey,
+  A.MOWHLO as XYWHLO
+
+
+ FROM
+ mvxcdta.mitplo A
+ INNER JOIN MVXCDTA.MITPLO B ON ((A.MOITNO = B.MOITNO) AND (A.MOCONO = B.MOCONO) AND (A.MORIDN = B.MORIDN))
+ inner join mvxcdta.mitmas C on ((mmcono = A.mocono) and (A.moitno = mmitno))
+ Inner join mvxcdta.MITBAL D on ((mbcono = A.mocono) and (A.moitno = mbitno)and A.mowhlo=MBwhlo)
+ inner join mvxcdta.MDOPLP N on ((A.mocono = docono) and (A.moridn = digits(doplpn)))
+ left join pfxcdta.XDELCR G on ((XDCONO=A.MOCONO) and (XDWHLO=B.MOWHLO) and (XDORNO=A.MORIDN))
+ left join pfxcdta.DOPDWDT E on ((A.MOCONO=E.DWCONO) and (A.MOITNO=E.DWITNO) and (A.MOWHLO=E.DWWHLO) and A.MORIDN = E.DWTRNR)
+ WHERE
+
+        
+      A.MOCONO = 1  AND 
+      A.MOWHLO IN ('GD1') AND 
+      B.MOWHLO IN ('001','AD1','UD1')
+          AND A.MOORCA IN ('510')
+          and C.MMACRF <> '.0'
+          and D.MBSUWH= 'VN1') CO
+
+
+UNION
+
+select CO.XYITNO, CO.XYORCA, CO.XYRRN,
+       year(pfxcdta.dec2date(CO.XYDUDT) - CO.DATE_DIFF days)*10000 + month(pfxcdta.dec2date(CO.XYDUDT) - CO.DATE_DIFF days)*100 + day(pfxcdta.dec2date(CO.XYDUDT) - CO.DATE_DIFF days) AS XYMFDT,
+       CO.XYTIHM,
+       year(pfxcdta.dec2date(CO.XYDUDT) - CO.DATE_DIFF days)*10000 + month(pfxcdta.dec2date(CO.XYDUDT) - CO.DATE_DIFF days)*100 + day(pfxcdta.dec2date(CO.XYDUDT) - CO.DATE_DIFF days) AS XYMFDT,
+       CO.XYT2HM, CO.XYPRIO, CO.XYSTAT, CO.XYBLANK, CO.XYRIDL,
+       CO.XYRIDI, CO.XYRFTX, CO.XYALQT, CO.XYACTP, CO.XYRNQT, CO.XYRIDN, CO.XYR2DL, CO.XYSuffix, CO.XYAKey,CO.XYWHLO
+! renaming Fields with XY in order to be able to sort them according to the SWB data transfer and recalculating the date and deducting transport time
+from (SELECT DISTINCT
+!This subselect structure has been chosen to make replacement easy from and where don't need to be toched
+  MOITNO as XYITNO,
+  MOORCA as XYORCA,
+  RRN(A) as XYRRN,
+  case when xdstat is NULL then (case when ZOZDWD=OBDWDZ then ZODTEA else OBDWDZ end) else (case when xdstat='60' then xdsodt else (case when xdstat='85' then xdsodt else (case when xdmndt = 0 then xdnndt else xdmndt end) end) end) end as XYDUDT,
+!                   relevant XRQX               Prior XRQX                                         Counter proposal                                                              Existing manual alternative plan date
+  MOTIHM*100 as XYTIHM,
+  case when xdstat is NULL then (case when ZOZDWD=OBDWDZ then ZODTEA else OBDWDZ end) else (case when xdstat='60' then xdsodt else (case when xdstat='85' then xdsodt else (case when xdmndt = 0 then xdnndt else xdmndt end) end) end) end as XYD2DT,
+
+  days(pfxcdta.dec2date(obcodt)) - days(pfxcdta.dec2date(obpldt)) AS DATE_DIFF,
+!Calculating difference between arrival and departure date for transport time calculation
+  MOTIHM*100 as XYT2HM,
+  MOPRIO*0 as XYPRIO,
+  MOSTAT as XYSTAT,
+  ' ' as XYBLANK,
+  MORIDL as XYRIDL,
+  MORIDI as XYRIDI,
+  MORFTX as XYRFTX,
+  MOALQT as XYALQT,
+  MOACTP as XYACTP,
+  ABS(MOTRQT)-MOALQT as XYRNQT,
+  MORIDN as XYRIDN,
+  MORIDL as XYR2DL,
+  0 as XYSuffix,
+  substr (MORIDN,1,10) concat substr((1000000 + MORIDL),2,6) concat substr(MOORCA,1,1) concat '        ' as XYAKey,
+  A.MOWHLO as XYWHLO
+
+
+ FROM
+ mvxcdta.mitplo A
+ inner join mvxcdta.ooline D on ((mocono = obcono) and (moridn = substr(oborno,1,10)) and (moridl = obponr))
+ inner join mvxcdta.oohead F on ((oacono = obcono) and (oaorno = oborno))
+ inner join pepcdta.zoline E on ((obcono = zocono) and (oborno = zoorno) and (obponr = zoponr))
+ inner join mvxcdta.mitmas C on ((mmcono = mocono) and (moitno = mmitno))
+ left outer join (SELECT  Main.XDORN2, Main.XDCONO, Main.XDPON2, main.XDSTAT, main.XDSODT, main.XDMNDT, main.XDNNDT, main.xdsmdt
+  FROM PFXCDTA.XDELCR as main
+  WHERE xdsmdt=(
+
+!Subselect find latest submitted XRQX -> XDSMDT Max
+        SELECT Max(sub.xdsmdt)
+        FROM PFXCDTA.XDELCR as sub
+        WHERE sub.xdorn2=main.xdorn2
+        GROUP BY sub.xdcono, sub.xdorn2)
+!Subselect only for the ordernos from the mainselect
+
+  GROUP BY main.XDORN2, main.XDCONO, main.XDPON2, main.XDSTAT, main.XDSODT, main.XDMNDT, main.XDNNDT, main.XDSMDT)
+ G on ((obcono = xdcono) and (oborno = xdorn2) and (obponr = xdpon2) and XDSTAT In ('60','50','85'))
+
+ WHERE
+
+              A.MOCONO = 1
+          AND A.MOWHLO IN ('VN1')
+          AND A.MOORCA IN ('311')
+          and F.OAOPRI <> '8'
+          and C.MMACRF <> '.0') CO
+
+!Prio <>8 only confirmed COs and exclude raw materials .0
+
+UNION
+
+select CO.XYITNO, CO.XYORCA, CO.XYRRN,
+       year(pfxcdta.dec2date(CO.XYDUDT) - CO.DATE_DIFF days)*10000 + month(pfxcdta.dec2date(CO.XYDUDT) - CO.DATE_DIFF days)*100 + day(pfxcdta.dec2date(CO.XYDUDT) - CO.DATE_DIFF days) AS XYMFDT,
+       CO.XYTIHM,
+       year(pfxcdta.dec2date(CO.XYDUDT) - CO.DATE_DIFF days)*10000 + month(pfxcdta.dec2date(CO.XYDUDT) - CO.DATE_DIFF days)*100 + day(pfxcdta.dec2date(CO.XYDUDT) - CO.DATE_DIFF days) AS XYMFDT,
+       CO.XYT2HM, CO.XYPRIO, CO.XYSTAT, CO.XYBLANK, CO.XYRIDL,
+       CO.XYRIDI, CO.XYRFTX, CO.XYALQT, CO.XYACTP, CO.XYRNQT, CO.XYRIDN, CO.XYR2DL, CO.XYSuffix, CO.XYAKey,CO.XYWHLO
+
+from (SELECT DISTINCT
+  MOITNO as XYITNO,
+  MOORCA as XYORCA,
+  RRN(A) as XYRRN,
+  obdwdz as XYDUDT,
+  MOTIHM*100 as XYTIHM,
+  obdwdz as XYD2DT,
+
+  days(pfxcdta.dec2date(obcodt)) - days(pfxcdta.dec2date(obpldt)) AS DATE_DIFF,
+
+  MOTIHM*100 as XYT2HM,
+  MOPRIO*0 as XYPRIO,
+  MOSTAT as XYSTAT,
+  ' ' as XYBLANK,
+  MORIDL as XYRIDL,
+  MORIDI as XYRIDI,
+  MORFTX as XYRFTX,
+  MOALQT as XYALQT,
+  MOACTP as XYACTP,
+  ABS(MOTRQT)-MOALQT as XYRNQT,
+  MORIDN as XYRIDN,
+  MORIDL as XYR2DL,
+  0 as XYSuffix,
+  substr (MORIDN,1,10) concat substr((1000000 + MORIDL),2,6) concat substr(MOORCA,1,1) concat '        ' as XYAKey,
+  A.MOWHLO as XYWHLO
+
+ FROM
+ mvxcdta.mitplo A
+ inner join mvxcdta.ooline D on ((mocono = obcono) and (moridn = substr(oborno,1,10)) and (moridl = obponr))
+ inner join mvxcdta.oohead F on ((oacono = obcono) and (oaorno = oborno))
+ inner join pepcdta.zoline E on ((obcono = zocono) and (oborno = zoorno) and (obponr = zoponr))
+ inner join mvxcdta.mitmas C on ((mmcono = mocono) and (moitno = mmitno))
+ WHERE
+
+              A.MOCONO = 1
+          AND A.MOWHLO IN ('VN1')
+          AND A.MOORCA IN ('311')
+          and F.OAOPRI = '8'
+          and C.MMACRF <> '.0') CO
+!Prio=8 only not confirmed COs and exclude raw materials .0
+
+UNION
+
+SELECT DISTINCT
+
+  MOITNO,
+  MOORCA,
+  RRN(A),
+  MOPLDT,
+  MOTIHM*100,
+  MOPLDT,
+  MOTIHM*100,
+  MOPRIO*0,
+  MOSTAT,
+  ' ',
+  MORIDL,
+  MORIDI,
+  MORFTX,
+  MOALQT,
+  MOACTP,
+  ABS(MOTRQT)-MOALQT as RNQT,
+  MORIDN,
+  MORIDL,
+  0 as Suffix,
+  substr (MORIDN,1,10) concat substr((1000000 + MORIDL),2,6) concat substr(MOORCA,1,1) concat '        ' as AKey,
+  A.MOWHLO as XYWHLO
+
+
+
+ FROM
+ mvxcdta.mitplo A
+ inner join mvxcdta.ooline D on ((mocono = obcono) and (moridn = substr(oborno,1,10)) and (moridl = obponr))
+ inner join mvxcdta.oohead F on ((oacono = obcono) and (oaorno = oborno))
+ inner join pepcdta.zoline E on ((obcono = zocono) and (oborno = zoorno) and (obponr = zoponr))
+ inner join mvxcdta.mitmas C on ((mmcono = mocono) and (moitno = mmitno)) 
+ WHERE
+
+              A.MOCONO = 1
+          AND A.MOWHLO = 'VN1'
+          AND A.MOORCA IN ('311')
+          and C.MMACRF = '.0'
+
+ 
+ 
+!------------------------------------------------------------------------------
+! EXPORT EXTERNAL REQUIREMENTS.
+!------------------------------------------------------------------------------
+ 
+[EXPORT::SALE]
+
+ @TITLE = Export external requirements
+ 
+ @CONVERTCHARS
+ 
+ @SKIP
+
+
+!------------------------------------------------------------------------------
+! IMPORT ROUTINGS.
+!------------------------------------------------------------------------------
+ 
+[ROUT]
+ 
+ @TITLE = Import routing
+ 
+ @CONVERTCHARS
+ 
+!------------------------------------------------------------------------------
+! Standard routings. Fixed time (POFXTI<>0) or time per item (POCTCD=0).
+!------------------------------------------------------------------------------
+ 
+ SELECT
+
+  @COL  = POPRNO                        ;CHAR      ;                                        ;TROREG.CRORON    ;       ;Routing number
+  @COL  = POOPNO                        ;INT       ;                                        ;TROREG.MRONUM    ;       ;Operation number
+  @COL  = POSETI*100/POWER(60, SECOND(TIME('12:00:0'||PPPTUN))*1.0-1);FLOAT     ;                                        ;TROREG.RROSUS    ;       ;Setup time standard (centihours)
+  @COL  = POPITI*100/POWER(60, SECOND(TIME('12:00:0'||PPPTUN))*1.0-1);FLOAT     ;                                        ;TROREG.RROTIM    ;       ;Operation time (centihours)
+  @COL  = POFXTI                        ;SMALL     ;                                        ;TROREG.IROIND    ;       ;Operation time indicator
+  @COL  = POPLGR                        ;CHAR      ;                                        ;TROREG.CROWKC    ;       ;Workcenter number
+  @COL  = SUBSTR(POOPDS, 1, 20)         ;CHAR      ;                                        ;TROREG.CRODES    ;       ;Description
+  @COL  = '0'                           ;CHAR      ;                                        ;TROREG.EROOKY    ;       ;Overlap code
+ 
+ FROM MPDOPE A, MPDWCT B
+  
+ WHERE
+
+  @WCOL = A.POCONO                      ;DEC 3,0   ;                                        ;TDBSTR.IDBCMP    ;       ;Company
+  @WCOL = AND A.POFACI                  ;CHAR      ;                                        ;TDBSTR.CDBFAC    ;       ;Facility
+          AND ((A.POCTCD = 0 AND A.POFXTI = 0) OR A.POFXTI <> 0)
+          AND B.PPCONO = A.POCONO
+          AND B.PPFACI = A.POFACI
+          AND B.PPPLGR = A.POPLGR
+ 
+!------------------------------------------------------------------------------
+! Standard routings. Time for a number of items (POCTCD<>0).
+!------------------------------------------------------------------------------
+ 
+ UNION SELECT POPRNO,POOPNO,POSETI*100/POWER(60,SECOND(TIME('12:00:0'||PPPTUN))*1.0-1),
+              POPITI*100/POWER(60,SECOND(TIME('12:00:0'||PPPTUN))*1.0-1)/POCTCD,
+              POFXTI,POPLGR,SUBSTR(POOPDS, 1, 20),'0'
+
+ FROM MPDOPE A, MPDWCT B 
+ 
+ WHERE
+
+  @WCOL = A.POCONO                      ;DEC 3,0   ;                                        ;TDBSTR.IDBCMP    ;       ;Company
+  @WCOL = AND A.POFACI                  ;CHAR      ;                                        ;TDBSTR.CDBFAC    ;       ;Facility
+          AND A.POCTCD <> 0
+          AND A.POFXTI = 0
+          AND B.PPCONO = A.POCONO
+          AND B.PPFACI = A.POFACI
+          AND B.PPPLGR = A.POPLGR
+ 
+ 
+!------------------------------------------------------------------------------
+! EXPORT ROUTINGS.
+!------------------------------------------------------------------------------
+ 
+[EXPORT::ROUT]
+ 
+ @TITLE = Export of routing
+ 
+ @CONVERTCHARS
+
+ @SKIP
+ 
+
+!------------------------------------------------------------------------------
+! IMPORT END ITEM ORDERS.
+!------------------------------------------------------------------------------
+ 
+[ORDH]
+ 
+ @TITLE = Import end item orders
+ 
+ @CONVERTCHARS
+
+ @SKIP
+
+
+!------------------------------------------------------------------------------
+! EXPORT END ITEM ORDERS.
+!------------------------------------------------------------------------------
+ 
+[EXPORT::ORDH]
+ 
+ @TITLE = Export end item orders
+ 
+ @CONVERTCHARS
+
+ @SKIP
+
+
+!------------------------------------------------------------------------------
+! IMPORT BILL OF MATERIALS.
+!------------------------------------------------------------------------------
+ 
+[MLNK]
+ 
+ @TITLE = Import bill of materials
+ 
+ @CONVERTCHARS
+ 
+ SELECT
+
+  @COL  = PMPRNO                        ;CHAR      ;                                        ;TMLREG.CMLMLI    ;       ;Bill of material number
+  @COL  = PMMSEQ                        ;SMALL     ;                                        ;TMLREG.MMLNUM    ;       ;Sequence number
+  @COL  = PMOPNO                        ;INT       ;                                        ;TMLREG.MMLDON    ;       ;Demanding operation
+  @COL  = PMMTNO                        ;CHAR      ;                                        ;TMLREG.CMLCIT    ;       ;Component item number
+  @COL  = PMFXCD                        ;SMALL     ;                                        ;TMLREG.IMLIND    ;       ;Requirement indicator
+  @COL  = PMCNQT                        ;FLOAT     ;                                        ;TMLREG.RMLRQQ    ;       ;Required quantity
+ 
+ FROM MPDMAT A 
+ 
+ WHERE
+
+  @WCOL = A.PMCONO                      ;DEC 3,0   ;                                        ;TDBSTR.IDBCMP    ;       ;Company
+  @WCOL = AND A.PMFACI                  ;CHAR      ;                                        ;TDBSTR.CDBFAC    ;       ;Facility
+ 
+
+!------------------------------------------------------------------------------
+! EXPORT OF BILL OF MATERIALS.
+!------------------------------------------------------------------------------
+ 
+[EXPORT::MLNK]
+ 
+ @TITLE = Export bill of materials
+ 
+ @CONVERTCHARS
+
+
+!------------------------------------------------------------------------------
+! IMPORT CONFIGURATIONS.
+!------------------------------------------------------------------------------
+ 
+[CFRE]
+ 
+ @TITLE = Import configurations
+ 
+ @CONVERTCHARS
+
+ @SKIP
+
+
+!------------------------------------------------------------------------------
+! EXPORT CONFIGURATIONS.
+!------------------------------------------------------------------------------
+ 
+[EXPORT::CFRE]
+ 
+ @TITLE = Export configurations
+ 
+ @CONVERTCHARS
+
+ @SKIP
+
+
+!------------------------------------------------------------------------------
+! IMPORT ATTRIBUTES.
+!------------------------------------------------------------------------------
+ 
+[ATRE]
+ 
+ @TITLE = Import attributes
+ 
+ @CONVERTCHARS
+
+ @SKIP
+
+
+!------------------------------------------------------------------------------
+! EXPORT ATTRIBUTES.
+!------------------------------------------------------------------------------
+ 
+[EXPORT::ATRE]
+ 
+ @TITLE = Export attributes
+ 
+ @CONVERTCHARS
+
+ @SKIP
+
+
+!------------------------------------------------------------------------------
+! DISTRIBUTION RELATIONS.
+!------------------------------------------------------------------------------
+ 
+[DISR]
+ 
+ @TITLE = Import distribution relations
+ 
+ @CONVERTCHARS
+
+ @SKIP
+
+
+!------------------------------------------------------------------------------
+! EXPORT DISTRIBUTION RELATIONS.
+!------------------------------------------------------------------------------
+ 
+[EXPORT::DISR]
+ 
+ @TITLE = Export  distribution relations
+ 
+ @CONVERTCHARS
+
+ @SKIP
+
+
+!------------------------------------------------------------------------------
+! CUSTOMER INFORMATION.
+!------------------------------------------------------------------------------
+ 
+[CIRE]
+ 
+ @TITLE = Import customer information
+ 
+ @CONVERTCHARS
+
+ @SKIP
+
+
+!------------------------------------------------------------------------------
+! EXPORT CUSTOMER INFORMATION.
+!------------------------------------------------------------------------------
+ 
+[EXPORT::CIRE]
+ 
+ @TITLE = Export customer information
+ 
+ @CONVERTCHARS
+
+ @SKIP
+
+
+!------------------------------------------------------------------------------
+! DELETE OLD RECORDS IN UPDATE TABLES
+!------------------------------------------------------------------------------
+ 
+[UPDATE_CLEANUP]
+ 
+ @TITLE = Delete old records in update tables
+ 
+ DELETE FROM MWXHED
+ 
+@LINKED
+ 
+ DELETE FROM MWXOPE
+ 
+@LINKED
+ 
+ DELETE FROM MWOOP1
+
+ 
+!------------------------------------------------------------------------------
+! UPDATE ORDER HEADERS TABLE.
+!------------------------------------------------------------------------------
+ 
+[UPDATE_ORDERS]
+ 
+ @TITLE = Update order headers
+ 
+ INSERT INTO MWXHED
+
+  @COL  = VXCONO                        ;DEC 3,0   ;                                        ;TDBSTR.IDBCMP    ;       ;
+  @COL  = VXFACI                        ;CHAR      ;                                        ;TDBSTR.CDBFAC    ;       ;
+  @COL  = VXPRNO                        ;CHAR      ;                                        ;TOHEAD.COHITM    ;  1:15 ;
+  @COL  = VXMFNO                        ;DEC 7,0   ;                                        ;TOHEAD.MOHMRP    ;       ;
+  @COL  = VXRPCD                        ;CHAR      ;TRANS(R,1)(P,0)                         ;TOHEAD.EOHOSS    ;       ;
+  @COL  = VXPSTS                        ;CHAR      ;TRANS(30,60)                            ;TOHEAD.IOHSTA    ;       ;
+  @COL  = VXSTDT                        ;DEC 8,0   ;PMS2XD                                  ;TOHEAD.MOHFST    ;       ;
+  @COL  = VXMSTI                        ;DEC 4,0   ;PMS2XT|MATH(/100)                       ;TOHEAD.MOHFST    ;       ;
+  @COL  = VXFIDT                        ;DEC 8,0   ;PMS2XD                                  ;TOHEAD.MOHFED    ;       ;
+  @COL  = VXMFTI                        ;DEC 4,0   ;PMS2XT|MATH(/100)                       ;TOHEAD.MOHFED    ;       ;
+  @COL  = VXORQA                        ;DEC 15,6  ;                                        ;TOHEAD.ROHPLQ    ;       ;
+ 
+
+!------------------------------------------------------------------------------
+! UPDATE OPERATIONS TABLE.
+!------------------------------------------------------------------------------
+ 
+[UPDATE_OPERATIONS]
+ 
+ @TITLE = Update operations
+ 
+ INSERT INTO MWXOPE
+
+  @COL  = VYCONO                        ;DEC 3,0   ;                                        ;TDBSTR.IDBCMP    ;       ;
+  @COL  = VYFACI                        ;CHAR      ;                                        ;TDBSTR.CDBFAC    ;       ;
+  @COL  = VYPRNO                        ;CHAR      ;                                        ;TOHEAD.COHITM    ;  1:15 ;
+  @COL  = VYMFNO                        ;DEC 7,0   ;                                        ;TOHEAD.MOHMRP    ;       ;
+  @COL  = VYOPNO                        ;DEC 4,0   ;                                        ;TOPRPL.MOPNUM    ;       ;
+  @COL  = VYRPCD                        ;CHAR      ;TRANS(R,1)(P,0)                         ;TOHEAD.EOHOSS    ;       ;
+  @COL  = VYSTDT                        ;DEC 8,0   ;PMS2XD                                  ;TOPRPL.MOPFST    ;       ;
+  @COL  = VYMSTI                        ;DEC 4,0   ;PMS2XT|MATH(/100)                       ;TOPRPL.MOPFST    ;       ;
+  @COL  = VYFIDT                        ;DEC 8,0   ;PMS2XD                                  ;TOPRPL.MOPFED    ;       ;
+  @COL  = VYMFTI                        ;DEC 4,0   ;PMS2XT|MATH(/100)                       ;TOPRPL.MOPFED    ;       ;
+ 
+!------------------------------------------------------------------------------
+! Update planned machine table.
+!------------------------------------------------------------------------------
+ 
+@LINKED
+ 
+ @TITLE = Update planned machine
+ 
+ INSERT INTO MWOOP1
+
+  @COL  = V1CONO                        ;DEC 3,0   ;                                        ;TDBSTR.IDBCMP    ;       ;
+  @COL  = V1FACI                        ;CHAR      ;                                        ;TDBSTR.CDBFAC    ;       ;
+  @COL  = V1PRNO                        ;CHAR      ;                                        ;TOHEAD.COHITM    ;  1:15 ;
+  @COL  = V1MFNO                        ;DEC 7,0   ;                                        ;TOHEAD.MOHMRP    ;       ;
+  @COL  = V1OPNO                        ;DEC 4,0   ;                                        ;TOPRPL.MOPNUM    ;       ;
+  @COL  = V1MACH                        ;CHAR      ;                                        ;TOPRPL.COPMAC    ;       ;
+ 
+
+!------------------------------------------------------------------------------
+! UPDATE MATERIALS.
+!------------------------------------------------------------------------------
+ 
+[UPDATE_MATERIALS]
+ 
+ @TITLE = Update materials
+ 
+  @SKIP
+ 
+ 
+!------------------------------------------------------------------------------
+! AFTERBURNER.
+!------------------------------------------------------------------------------
+ 
+[UPDATE_AFTERBURNER]
+ 
+  @TITLE = Update afterburner
+  
+  INSERT INTO MPM015
+
+  @COL  = ZAJNU=999999
+  @COL  = ZAPRD=980325
+  @COL  = ZAPRT=0
+  @COL  = ZACONO                   ;SMALL ;          ;TDBSTR.IDBCMP ;       ;
+  @COL  = ZAPGNM='PMSIM'
+  @COL  = ZACHID='PMSIM+PSDB'
+
+
+!------------------------------------------------------------------------------
+! GET SERVER DATE AND TIME.
+!------------------------------------------------------------------------------
+ 
+[GETSERVERTIME]
+ 
+ @TITLE = Get time from server
+
+ SELECT
+
+  @COL  = CURRENT DATE                  ;DATE      ;                                        ;TDBTIM.MDBTIM    ;       ;
+  @COL  = CURRENT TIME                  ;TIME      ;                                        ;TDBTIM.MDBTIM    ;       ;
+
+ FROM MVXCDTA.MWXHED
+ 
+
+!------------------------------------------------------------------------------
+! INCREMENTAL IMPORT OF ORDER HEADERS.(THE FIELD TDBSTR.MDBLOI CONTAINS
+! THE TIMESTAMP FOR THE LATEST ORDERIMPORT).
+!------------------------------------------------------------------------------
+ 
+[ORDERHEADERS-INC]
+ 
+ @TITLE = Incremental import of order headers
+ 
+ @CONVERTCHARS
+ 
+ @SKIP
+
+
+!------------------------------------------------------------------------------
+! INCREMENTAL IMPORT OF OPERATIONS. (THE FIELD TDBSTR.MDBLOI CONTAINS
+! THE TIMESTAMP FOR THE LATEST ORDERIMPORT).
+!------------------------------------------------------------------------------
+ 
+[OPERATIONS-INC]
+ 
+ @TITLE = Incremental import of operations
+ 
+ @CONVERTCHARS
+ 
+ @SKIP
+
+
+!------------------------------------------------------------------------------
+! INCREMENTAL IMPORT OF ORDER RELATIONS. (THE FIELD TDBSTR.MDBLOI CONTAINS
+! THE TIMESTAMP FOR THE LATEST ORDERIMPORT).
+!------------------------------------------------------------------------------
+ 
+[ORDER-RELATIONS-INC]
+ 
+ @TITLE = Incremental import of order relations
+ 
+ @CONVERTCHARS
+ 
+ @SKIP
+
+
+!------------------------------------------------------------------------------
+! UPDATE EXISTING ORDER HEADERS.
+!------------------------------------------------------------------------------
+ 
+[UPDATE-ORDERHEADERS]
+
+ @TITLE = Update order headers
+ 
+ @CONVERTCHARS
+ 
+ @SKIP
+
+
+!------------------------------------------------------------------------------
+! UPDATE EXISTING OPERATIONS.
+!------------------------------------------------------------------------------
+ 
+[UPDATE-OPERATIONS]
+
+ @TITLE = Update order headers
+ 
+ @CONVERTCHARS
+ 
+ @SKIP
+
+
+!------------------------------------------------------------------------------
+! UPDATE EXISTING ORDER-RELATIONS.
+!------------------------------------------------------------------------------
+ 
+[UPDATE-ORDER-RELATIONS]
+ 
+ @TITLE = Update order relations
+ 
+ @CONVERTCHARS
+ 
+ @SKIP
