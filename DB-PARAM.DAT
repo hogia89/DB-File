@@ -1245,7 +1245,7 @@ group by MBWHLO,MBITNO,XIFGRP,XGOFTM,MBLEAT,MBSTQT,MBALQT,MMITDS,MBPUIT,MBMXST,M
  !   - Item status is larger than or equal 20 and less than 80. (MMS002)
  !   - Item no between '0000' and '999999' ? 
  !   - Warehouse subtype is different 'F'.
- !   - Seasonal item is unchecked.
+
  !------------------------------------------------------------------------------
 
 Union Select
@@ -1282,6 +1282,14 @@ group by MBWHLO,MBITNO,XIFGRP,XGOFTM,MBLEAT,MBSTQT,MBALQT,MMITDS,MBPUIT,MBMXST,M
 
 !------------------------------------------------------------------------------
 ! INTERNAL ITEMS ITEMS (MBPUIT=3 , internal DOP, not MBWHSY = 'F')).
+! Condition SWB consider one item as external item (P):
+!   - Warehouse is GD1 (Field MBWHLO)
+!   - Acquisition cd is 3
+!   - Supplying warehouse is different VN1 or MF1
+!   - Item status between '00' and '99' (MMS100)
+!   - Item status is larger than or equal 20 and less than 80. (MMS002)
+!   - Item no between '0000' and '999999' ? 
+!   - Warehouse subtype is different 'F'.
 !------------------------------------------------------------------------------
 Union Select
 	      A.MBITNO,
